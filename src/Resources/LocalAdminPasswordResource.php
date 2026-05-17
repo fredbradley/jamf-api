@@ -28,7 +28,7 @@ class LocalAdminPasswordResource extends AbstractResource
     /**
      * Update the LAPS global settings.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function saveSettings(array $data): array
@@ -40,7 +40,7 @@ class LocalAdminPasswordResource extends AbstractResource
      * Retrieve the current local admin password for a managed device.
      *
      * @param  string  $clientManagementId  The device's client management ID.
-     * @param  string  $username            The local admin account username.
+     * @param  string  $username  The local admin account username.
      * @return array<string,mixed>
      */
     public function getPassword(string $clientManagementId, string $username): array
@@ -53,7 +53,6 @@ class LocalAdminPasswordResource extends AbstractResource
     /**
      * List all LAPS accounts for a managed device.
      *
-     * @param  string  $clientManagementId
      * @return list<array<string,mixed>>
      */
     public function accounts(string $clientManagementId): array
@@ -65,10 +64,7 @@ class LocalAdminPasswordResource extends AbstractResource
     /**
      * List all LAPS accounts across all managed devices.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
      * @param  list<string>  $sort
-     * @param  string|null   $filter
      * @return Page<array<string,mixed>>
      */
     public function allAccounts(
@@ -78,25 +74,22 @@ class LocalAdminPasswordResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v2/local-admin-password/accounts', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
     /**
      * Rotate (regenerate) the local admin password for a managed device.
-     *
-     * @param  string  $clientManagementId
-     * @param  string  $username
      */
     public function rotate(string $clientManagementId, string $username): void
     {
@@ -120,10 +113,10 @@ class LocalAdminPasswordResource extends AbstractResource
         );
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 }

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Cranleigh\JamfApi\Resources;
 
-use Cranleigh\JamfApi\Data\Common\HistoryNote;
-use Cranleigh\JamfApi\Pagination\Page;
 use Cranleigh\JamfApi\Resources\Concerns\HasCsvExport;
 use Cranleigh\JamfApi\Resources\Concerns\HasHistory;
 
@@ -16,28 +14,27 @@ use Cranleigh\JamfApi\Resources\Concerns\HasHistory;
  */
 class ActivationCodeResource extends AbstractResource
 {
-    use HasHistory;
     use HasCsvExport;
+    use HasHistory;
 
     /**
      * Update the Jamf Pro activation code.
      *
      * @param  string  $organizationName  Your organisation name.
-     * @param  string  $code             The activation code.
+     * @param  string  $code  The activation code.
      * @return array<string,mixed>
      */
     public function update(string $organizationName, string $code): array
     {
         return $this->http->put('/v1/activation-code', [
             'organizationName' => $organizationName,
-            'code'             => $code,
+            'code' => $code,
         ])->json();
     }
 
     /**
      * Update the organisation name only (PATCH).
      *
-     * @param  string  $organizationName
      * @return array<string,mixed>
      */
     public function updateOrganizationName(string $organizationName): array

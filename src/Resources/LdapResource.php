@@ -24,9 +24,9 @@ class LdapResource extends AbstractResource
     /**
      * Search for LDAP access groups matching the given text.
      *
-     * @param  string       $q            Search text (partial group name).
-     * @param  string|null  $serverId     Limit search to a specific LDAP server ID.
-     * @param  bool         $includeUsers Whether to include user objects in results.
+     * @param  string  $q  Search text (partial group name).
+     * @param  string|null  $serverId  Limit search to a specific LDAP server ID.
+     * @param  bool  $includeUsers  Whether to include user objects in results.
      * @return list<array<string,mixed>>
      */
     public function searchGroups(
@@ -35,7 +35,7 @@ class LdapResource extends AbstractResource
         bool $includeUsers = false,
     ): array {
         return $this->http->get('/v1/ldap/groups', $this->buildQuery([
-            'q'            => $q,
+            'q' => $q,
             'ldapServerId' => $serverId,
             'includeUsers' => $includeUsers ? 'true' : null,
         ]))->json('groups', []);

@@ -17,10 +17,7 @@ class PatchTitlesResource extends AbstractResource
     /**
      * List all available patch management software titles.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
      * @param  list<string>  $sort
-     * @param  string|null   $filter
      * @return Page<PatchTitle>
      */
     public function list(
@@ -30,17 +27,17 @@ class PatchTitlesResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v3/patch-titles', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    array_map(PatchTitle::fromArray(...), $response->json('results', [])),
+            results: array_map(PatchTitle::fromArray(...), $response->json('results', [])),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -60,15 +57,15 @@ class PatchTitlesResource extends AbstractResource
     public function patches(string $id, int $page = 0, int $pageSize = 100): Page
     {
         $response = $this->http->get("/v3/patch-titles/{$id}/patches", $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 }

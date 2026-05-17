@@ -9,7 +9,7 @@ namespace Cranleigh\JamfApi\Enums;
  */
 enum SortOrder: string
 {
-    case Asc  = 'asc';
+    case Asc = 'asc';
     case Desc = 'desc';
 
     /**

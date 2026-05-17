@@ -16,10 +16,7 @@ class MdmResource extends AbstractResource
     /**
      * List MDM commands sent to devices.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
      * @param  list<string>  $sort
-     * @param  string|null   $filter
      * @return Page<array<string,mixed>>
      */
     public function list(
@@ -29,24 +26,24 @@ class MdmResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v1/mdm/commands', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
     /**
      * Send an MDM command to one or more devices.
      *
-     * @param  array<string,mixed> $data  Command payload including clientManagementIds and commandType.
+     * @param  array<string,mixed>  $data  Command payload including clientManagementIds and commandType.
      * @return array<string,mixed>
      */
     public function send(array $data): array

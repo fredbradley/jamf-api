@@ -16,10 +16,10 @@ class ComputerGroupsResource extends AbstractResource
     /**
      * List all computer groups (smart and static).
      *
-     * @param  int           $page      Zero-based page index.
-     * @param  int           $pageSize  Results per page.
-     * @param  list<string>  $sort      Sort fields, e.g. ['name:asc'].
-     * @param  string|null   $filter    RSQL filter string.
+     * @param  int  $page  Zero-based page index.
+     * @param  int  $pageSize  Results per page.
+     * @param  list<string>  $sort  Sort fields, e.g. ['name:asc'].
+     * @param  string|null  $filter  RSQL filter string.
      * @return Page<array<string,mixed>>
      */
     public function list(
@@ -29,17 +29,17 @@ class ComputerGroupsResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v1/computer-groups', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -61,15 +61,15 @@ class ComputerGroupsResource extends AbstractResource
     public function smart(int $page = 0, int $pageSize = 100): Page
     {
         $response = $this->http->get('/v2/smart-computer-groups', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -81,15 +81,15 @@ class ComputerGroupsResource extends AbstractResource
     public function static(int $page = 0, int $pageSize = 100): Page
     {
         $response = $this->http->get('/v2/static-computer-groups', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 }

@@ -15,8 +15,8 @@ trait HasCsvExport
     /**
      * Export history or records as a CSV string.
      *
-     * @param  list<string>  $sort    Sort fields.
-     * @param  string|null   $filter  RSQL filter string.
+     * @param  list<string>  $sort  Sort fields.
+     * @param  string|null  $filter  RSQL filter string.
      * @param  list<string>  $fields  Specific fields to include in the export.
      */
     public function exportCsv(
@@ -25,7 +25,7 @@ trait HasCsvExport
         array $fields = [],
     ): string {
         $response = $this->http->post($this->exportPath(), $this->buildQuery([
-            'sort'   => $sort ?: null,
+            'sort' => $sort ?: null,
             'filter' => $filter,
             'fields' => $fields ?: null,
         ]));

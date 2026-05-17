@@ -16,10 +16,8 @@ class MobileDeviceManagementCommandsResource extends AbstractResource
     /**
      * List MDM commands sent to mobile devices.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
      * @param  list<string>  $sort
-     * @param  string|null   $filter  RSQL filter, e.g. 'status=="Pending"'.
+     * @param  string|null  $filter  RSQL filter, e.g. 'status=="Pending"'.
      * @return Page<array<string,mixed>>
      */
     public function list(
@@ -29,26 +27,26 @@ class MobileDeviceManagementCommandsResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v2/mobile-device-management-commands', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
     /**
      * Send an MDM command to one or more mobile devices.
      *
-     * @param  list<string>        $clientManagementIds  Device management IDs.
-     * @param  string              $commandType          Command name, e.g. 'DEVICE_LOCK', 'ERASE_DEVICE'.
-     * @param  array<string,mixed> $params               Additional command parameters.
+     * @param  list<string>  $clientManagementIds  Device management IDs.
+     * @param  string  $commandType  Command name, e.g. 'DEVICE_LOCK', 'ERASE_DEVICE'.
+     * @param  array<string,mixed>  $params  Additional command parameters.
      * @return array<string,mixed>
      */
     public function send(
@@ -58,7 +56,7 @@ class MobileDeviceManagementCommandsResource extends AbstractResource
     ): array {
         return $this->http->post('/v2/mobile-device-management-commands', [
             'clientManagementIds' => $clientManagementIds,
-            'commandType'         => $commandType,
+            'commandType' => $commandType,
             ...$params,
         ])->json();
     }

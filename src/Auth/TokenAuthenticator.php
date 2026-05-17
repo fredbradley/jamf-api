@@ -6,6 +6,7 @@ namespace Cranleigh\JamfApi\Auth;
 
 use Cranleigh\JamfApi\Auth\Contracts\AuthenticatorInterface;
 use Cranleigh\JamfApi\Exceptions\AuthenticationException;
+use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -42,7 +43,7 @@ final class TokenAuthenticator implements AuthenticatorInterface
             $this->initialize();
         }
 
-        return 'Bearer ' . $this->token;
+        return 'Bearer '.$this->token;
     }
 
     public function shouldRefresh(): bool
@@ -58,14 +59,14 @@ final class TokenAuthenticator implements AuthenticatorInterface
     public function refresh(): void
     {
         $response = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $this->token,
-            'Accept'        => 'application/json',
-        ])->post($this->baseUrl . '/api/v1/auth/keep-alive');
+            'Authorization' => 'Bearer '.$this->token,
+            'Accept' => 'application/json',
+        ])->post($this->baseUrl.'/api/v1/auth/keep-alive');
 
         if ($response->failed()) {
             // Keep-alive failed; re-authenticate from scratch.
-            $this->token      = null;
-            $this->expiresAt  = null;
+            $this->token = null;
+            $this->expiresAt = null;
             $this->initialize();
 
             return;
@@ -85,7 +86,7 @@ final class TokenAuthenticator implements AuthenticatorInterface
         $cached = $this->cache()->get(self::CACHE_KEY);
 
         if ($cached !== null) {
-            $this->token     = $cached['token'];
+            $this->token = $cached['token'];
             $this->expiresAt = Carbon::parse($cached['expires']);
 
             return;
@@ -93,7 +94,7 @@ final class TokenAuthenticator implements AuthenticatorInterface
 
         $response = Http::withBasicAuth($this->username, $this->password)
             ->withHeaders(['Accept' => 'application/json'])
-            ->post($this->baseUrl . '/api/v1/auth/token');
+            ->post($this->baseUrl.'/api/v1/auth/token');
 
         if ($response->status() === 401) {
             throw new AuthenticationException(
@@ -104,7 +105,7 @@ final class TokenAuthenticator implements AuthenticatorInterface
 
         if ($response->failed()) {
             throw new AuthenticationException(
-                'Jamf Pro token authentication request failed: ' . $response->status(),
+                'Jamf Pro token authentication request failed: '.$response->status(),
                 $response->status(),
             );
         }
@@ -113,11 +114,11 @@ final class TokenAuthenticator implements AuthenticatorInterface
     }
 
     /**
-     * @param array<string,mixed> $payload
+     * @param  array<string,mixed>  $payload
      */
     private function storeToken(array $payload): void
     {
-        $this->token     = $payload['token'];
+        $this->token = $payload['token'];
         $this->expiresAt = Carbon::parse($payload['expires']);
 
         $this->cache()->put(
@@ -127,7 +128,7 @@ final class TokenAuthenticator implements AuthenticatorInterface
         );
     }
 
-    private function cache(): \Illuminate\Contracts\Cache\Repository
+    private function cache(): Repository
     {
         return Cache::store($this->cacheDriver);
     }

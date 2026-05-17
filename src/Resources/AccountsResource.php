@@ -17,10 +17,10 @@ class AccountsResource extends AbstractResource
     /**
      * List all Jamf Pro user accounts with optional pagination, filtering, and sorting.
      *
-     * @param  int           $page      Zero-based page index.
-     * @param  int           $pageSize  Results per page (max 100).
-     * @param  list<string>  $sort      Sort fields, e.g. ['username:asc', 'email:desc'].
-     * @param  string|null   $filter    RSQL filter, e.g. 'username=="admin*"'.
+     * @param  int  $page  Zero-based page index.
+     * @param  int  $pageSize  Results per page (max 100).
+     * @param  list<string>  $sort  Sort fields, e.g. ['username:asc', 'email:desc'].
+     * @param  string|null  $filter  RSQL filter, e.g. 'username=="admin*"'.
      * @return Page<Account>
      */
     public function list(
@@ -30,17 +30,17 @@ class AccountsResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v1/accounts', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    array_map(Account::fromArray(...), $response->json('results', [])),
+            results: array_map(Account::fromArray(...), $response->json('results', [])),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -55,7 +55,7 @@ class AccountsResource extends AbstractResource
     /**
      * Create a new user account.
      *
-     * @param  array<string,mixed> $data  Account properties.
+     * @param  array<string,mixed>  $data  Account properties.
      */
     public function create(array $data): Account
     {
@@ -65,7 +65,7 @@ class AccountsResource extends AbstractResource
     /**
      * Update an existing user account (full replacement).
      *
-     * @param  array<string,mixed> $data  Updated account properties.
+     * @param  array<string,mixed>  $data  Updated account properties.
      */
     public function update(string $id, array $data): Account
     {

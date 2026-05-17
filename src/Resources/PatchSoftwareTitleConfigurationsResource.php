@@ -27,10 +27,7 @@ class PatchSoftwareTitleConfigurationsResource extends AbstractResource
     /**
      * List all patch software title configurations.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
      * @param  list<string>  $sort
-     * @param  string|null   $filter
      * @return Page<PatchSoftwareTitleConfiguration>
      */
     public function list(
@@ -40,17 +37,17 @@ class PatchSoftwareTitleConfigurationsResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v2/patch-software-title-configurations', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    array_map(PatchSoftwareTitleConfiguration::fromArray(...), $response->json('results', [])),
+            results: array_map(PatchSoftwareTitleConfiguration::fromArray(...), $response->json('results', [])),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -67,7 +64,7 @@ class PatchSoftwareTitleConfigurationsResource extends AbstractResource
     /**
      * Create a new patch software title configuration.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public function create(array $data): PatchSoftwareTitleConfiguration
     {
@@ -79,7 +76,7 @@ class PatchSoftwareTitleConfigurationsResource extends AbstractResource
     /**
      * Update a patch software title configuration (full replacement).
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public function update(string $id, array $data): PatchSoftwareTitleConfiguration
     {

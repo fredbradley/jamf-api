@@ -6,10 +6,10 @@ use Cranleigh\JamfApi\Data\Computer\ComputerSummary;
 
 it('creates a computer summary from a flat array', function (): void {
     $data = [
-        'id'         => '42',
-        'udid'       => 'ABCD-1234',
-        'name'       => 'MacBook Pro',
-        'managed'    => true,
+        'id' => '42',
+        'udid' => 'ABCD-1234',
+        'name' => 'MacBook Pro',
+        'managed' => true,
         'supervised' => false,
     ];
 

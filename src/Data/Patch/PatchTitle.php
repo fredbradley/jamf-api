@@ -31,20 +31,20 @@ readonly class PatchTitle
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         return new self(
-            id:            (string) ($data['id'] ?? ''),
-            name:          $data['name'] ?? '',
-            enabled:       (bool) ($data['enabled'] ?? false),
-            sourceType:    $data['sourceType'] ?? null,
-            sourceName:    $data['sourceName'] ?? null,
-            publisher:     $data['publisher'] ?? null,
-            appName:       $data['appName'] ?? null,
+            id: (string) ($data['id'] ?? ''),
+            name: $data['name'] ?? '',
+            enabled: (bool) ($data['enabled'] ?? false),
+            sourceType: $data['sourceType'] ?? null,
+            sourceName: $data['sourceName'] ?? null,
+            publisher: $data['publisher'] ?? null,
+            appName: $data['appName'] ?? null,
             latestVersion: $data['latestVersion'] ?? null,
-            lastUpdated:   $data['lastUpdated'] ?? null,
+            lastUpdated: $data['lastUpdated'] ?? null,
         );
     }
 }

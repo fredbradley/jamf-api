@@ -26,7 +26,7 @@ class PatchManagementResource extends AbstractResource
     /**
      * Update patch management settings.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function save(array $data): array

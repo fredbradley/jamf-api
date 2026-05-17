@@ -35,22 +35,22 @@ readonly class Account
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         return new self(
-            id:                  (string) ($data['id'] ?? ''),
-            username:            $data['username'] ?? '',
-            fullName:            $data['fullName'] ?? null,
-            email:               $data['email'] ?? null,
-            phoneNumber:         $data['phoneNumber'] ?? null,
-            position:            $data['position'] ?? null,
-            enabled:             (bool) ($data['enabled'] ?? true),
+            id: (string) ($data['id'] ?? ''),
+            username: $data['username'] ?? '',
+            fullName: $data['fullName'] ?? null,
+            email: $data['email'] ?? null,
+            phoneNumber: $data['phoneNumber'] ?? null,
+            position: $data['position'] ?? null,
+            enabled: (bool) ($data['enabled'] ?? true),
             forcePasswordChange: (bool) ($data['forcePasswordChange'] ?? false),
-            accessLevel:         $data['accessLevel'] ?? null,
-            privilegeSet:        $data['privilegeSet'] ?? null,
-            ldapServerId:        isset($data['ldapServer']['id']) ? (string) $data['ldapServer']['id'] : null,
+            accessLevel: $data['accessLevel'] ?? null,
+            privilegeSet: $data['privilegeSet'] ?? null,
+            ldapServerId: isset($data['ldapServer']['id']) ? (string) $data['ldapServer']['id'] : null,
         );
     }
 }

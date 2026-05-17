@@ -31,7 +31,7 @@ class SsoSettingsResource extends AbstractResource
     /**
      * Update SSO settings.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function save(array $data): array
@@ -52,7 +52,7 @@ class SsoSettingsResource extends AbstractResource
     /**
      * Update the SSO identity provider certificate.
      *
-     * @param  array<string,mixed> $data  Certificate data.
+     * @param  array<string,mixed>  $data  Certificate data.
      * @return array<string,mixed>
      */
     public function updateCertificate(array $data): array

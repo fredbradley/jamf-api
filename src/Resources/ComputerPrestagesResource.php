@@ -25,24 +25,24 @@ class ComputerPrestagesResource extends AbstractResource
     /**
      * List all computer prestages.
      *
-     * @param  int           $page      Zero-based page index.
-     * @param  int           $pageSize  Results per page.
-     * @param  list<string>  $sort      Sort fields.
+     * @param  int  $page  Zero-based page index.
+     * @param  int  $pageSize  Results per page.
+     * @param  list<string>  $sort  Sort fields.
      * @return Page<ComputerPrestage>
      */
     public function list(int $page = 0, int $pageSize = 100, array $sort = []): Page
     {
         $response = $this->http->get('/v2/computer-prestages', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
+            'sort' => $sort ?: null,
         ]));
 
         return new Page(
-            results:    array_map(ComputerPrestage::fromArray(...), $response->json('results', [])),
+            results: array_map(ComputerPrestage::fromArray(...), $response->json('results', [])),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -59,7 +59,7 @@ class ComputerPrestagesResource extends AbstractResource
     /**
      * Create a new computer prestage.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public function create(array $data): ComputerPrestage
     {
@@ -69,7 +69,7 @@ class ComputerPrestagesResource extends AbstractResource
     /**
      * Update a computer prestage (full replacement).
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public function update(string $id, array $data): ComputerPrestage
     {
@@ -100,13 +100,13 @@ class ComputerPrestagesResource extends AbstractResource
      * Replace the entire scope of a computer prestage.
      *
      * @param  list<string>  $serialNumbers  Device serial numbers to assign.
-     * @param  int           $versionLock    Current version lock from the prestage record.
+     * @param  int  $versionLock  Current version lock from the prestage record.
      */
     public function replaceScope(string $id, array $serialNumbers, int $versionLock): array
     {
         return $this->http->put("/v2/computer-prestages/{$id}/scope", [
             'serialNumbers' => $serialNumbers,
-            'versionLock'   => $versionLock,
+            'versionLock' => $versionLock,
         ])->json();
     }
 
@@ -114,13 +114,12 @@ class ComputerPrestagesResource extends AbstractResource
      * Add serial numbers to the scope of a computer prestage.
      *
      * @param  list<string>  $serialNumbers
-     * @param  int           $versionLock
      */
     public function addToScope(string $id, array $serialNumbers, int $versionLock): array
     {
         return $this->http->post("/v2/computer-prestages/{$id}/scope", [
             'serialNumbers' => $serialNumbers,
-            'versionLock'   => $versionLock,
+            'versionLock' => $versionLock,
         ])->json();
     }
 
@@ -128,13 +127,12 @@ class ComputerPrestagesResource extends AbstractResource
      * Remove serial numbers from the scope of a computer prestage.
      *
      * @param  list<string>  $serialNumbers
-     * @param  int           $versionLock
      */
     public function removeFromScope(string $id, array $serialNumbers, int $versionLock): array
     {
         return $this->http->post("/v2/computer-prestages/{$id}/scope/delete-multiple", [
             'serialNumbers' => $serialNumbers,
-            'versionLock'   => $versionLock,
+            'versionLock' => $versionLock,
         ])->json();
     }
 

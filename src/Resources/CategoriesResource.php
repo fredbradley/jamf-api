@@ -23,10 +23,7 @@ class CategoriesResource extends AbstractResource
     /**
      * List all categories.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
      * @param  list<string>  $sort
-     * @param  string|null   $filter
      * @return Page<Category>
      */
     public function list(
@@ -36,17 +33,17 @@ class CategoriesResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v1/categories', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    array_map(Category::fromArray(...), $response->json('results', [])),
+            results: array_map(Category::fromArray(...), $response->json('results', [])),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -61,8 +58,8 @@ class CategoriesResource extends AbstractResource
     /**
      * Create a new category.
      *
-     * @param  string  $name      Category name.
-     * @param  int     $priority  Display priority (default 9).
+     * @param  string  $name  Category name.
+     * @param  int  $priority  Display priority (default 9).
      */
     public function create(string $name, int $priority = 9): Category
     {
@@ -73,9 +70,6 @@ class CategoriesResource extends AbstractResource
 
     /**
      * Update an existing category.
-     *
-     * @param  string  $name
-     * @param  int     $priority
      */
     public function update(string $id, string $name, int $priority = 9): Category
     {

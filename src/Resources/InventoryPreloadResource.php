@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Cranleigh\JamfApi\Resources;
 
-use Cranleigh\JamfApi\Data\Common\HistoryNote;
 use Cranleigh\JamfApi\Pagination\Page;
 use Cranleigh\JamfApi\Resources\Concerns\HasHistory;
 
@@ -23,10 +22,7 @@ class InventoryPreloadResource extends AbstractResource
     /**
      * List all inventory preload records.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
      * @param  list<string>  $sort
-     * @param  string|null   $filter
      * @return Page<array<string,mixed>>
      */
     public function list(
@@ -36,17 +32,17 @@ class InventoryPreloadResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v2/inventory-preload/records', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -63,7 +59,7 @@ class InventoryPreloadResource extends AbstractResource
     /**
      * Create a new inventory preload record.
      *
-     * @param  array<string,mixed> $data  Record data including serialNumber, deviceType, etc.
+     * @param  array<string,mixed>  $data  Record data including serialNumber, deviceType, etc.
      * @return array<string,mixed>
      */
     public function create(array $data): array
@@ -74,7 +70,7 @@ class InventoryPreloadResource extends AbstractResource
     /**
      * Update an inventory preload record (full replacement).
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function update(string $id, array $data): array
@@ -112,7 +108,7 @@ class InventoryPreloadResource extends AbstractResource
      * Import inventory preload records from a CSV string.
      *
      * @param  string  $csv  CSV content conforming to the template format.
-     * @return array<string,mixed>  Import result with counts of created/updated/failed records.
+     * @return array<string,mixed> Import result with counts of created/updated/failed records.
      */
     public function importCsv(string $csv): array
     {

@@ -19,7 +19,7 @@ abstract class AbstractResource
      * Build a query parameter array, stripping null, empty string, and empty
      * array values so they are not sent to the API.
      *
-     * @param  array<string,mixed> $params
+     * @param  array<string,mixed>  $params
      * @return array<string,mixed>
      */
     protected function buildQuery(array $params): array

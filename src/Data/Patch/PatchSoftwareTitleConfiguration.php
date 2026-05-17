@@ -33,21 +33,21 @@ readonly class PatchSoftwareTitleConfiguration
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         return new self(
-            id:                   (string) ($data['id'] ?? ''),
-            displayName:          $data['displayName'] ?? '',
-            softwareTitleId:      (string) ($data['softwareTitleId'] ?? ''),
-            categoryId:           isset($data['categoryId']) ? (string) $data['categoryId'] : null,
-            siteId:               isset($data['siteId']) ? (string) $data['siteId'] : null,
-            distributionMethod:   $data['distributionMethod'] ?? null,
+            id: (string) ($data['id'] ?? ''),
+            displayName: $data['displayName'] ?? '',
+            softwareTitleId: (string) ($data['softwareTitleId'] ?? ''),
+            categoryId: isset($data['categoryId']) ? (string) $data['categoryId'] : null,
+            siteId: isset($data['siteId']) ? (string) $data['siteId'] : null,
+            distributionMethod: $data['distributionMethod'] ?? null,
             notificationSettings: $data['notificationSettings'] ?? null,
-            gracePeriodSettings:  $data['gracePeriodSettings'] ?? null,
-            versionLock:          (int) ($data['versionLock'] ?? 0),
-            modificationDate:     $data['modificationDate'] ?? null,
+            gracePeriodSettings: $data['gracePeriodSettings'] ?? null,
+            versionLock: (int) ($data['versionLock'] ?? 0),
+            modificationDate: $data['modificationDate'] ?? null,
         );
     }
 }

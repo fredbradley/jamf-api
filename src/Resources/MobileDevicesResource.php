@@ -18,10 +18,10 @@ class MobileDevicesResource extends AbstractResource
     /**
      * List mobile devices with optional filtering and sorting.
      *
-     * @param  int           $page      Zero-based page index.
-     * @param  int           $pageSize  Results per page.
-     * @param  list<string>  $sort      Sort fields, e.g. ['name:asc'].
-     * @param  string|null   $filter    RSQL filter string.
+     * @param  int  $page  Zero-based page index.
+     * @param  int  $pageSize  Results per page.
+     * @param  list<string>  $sort  Sort fields, e.g. ['name:asc'].
+     * @param  string|null  $filter  RSQL filter string.
      * @return Page<MobileDeviceSummary>
      */
     public function list(
@@ -31,17 +31,17 @@ class MobileDevicesResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v2/mobile-devices', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    array_map(MobileDeviceSummary::fromArray(...), $response->json('results', [])),
+            results: array_map(MobileDeviceSummary::fromArray(...), $response->json('results', [])),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -66,7 +66,7 @@ class MobileDevicesResource extends AbstractResource
     /**
      * Update a mobile device record (partial update via PATCH).
      *
-     * @param  array<string,mixed> $data  Fields to update.
+     * @param  array<string,mixed>  $data  Fields to update.
      */
     public function patch(string $id, array $data): MobileDeviceSummary
     {

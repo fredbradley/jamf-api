@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Cranleigh\JamfApi;
 
-use Cranleigh\JamfApi\Auth\Contracts\AuthenticatorInterface;
 use Cranleigh\JamfApi\Auth\OAuthAuthenticator;
 use Cranleigh\JamfApi\Auth\TokenAuthenticator;
 use Illuminate\Contracts\Foundation\Application;
@@ -26,28 +25,28 @@ class JamfServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/jamf.php', 'jamf');
+        $this->mergeConfigFrom(__DIR__.'/../config/jamf.php', 'jamf');
 
         $this->app->singleton(JamfClient::class, function (Application $app): JamfClient {
             /** @var array<string,mixed> $config */
             $config = $app->make('config')->get('jamf', []);
 
-            $baseUrl     = rtrim((string) ($config['base_url'] ?? ''), '/');
-            $authMethod  = (string) ($config['auth'] ?? 'token');
+            $baseUrl = rtrim((string) ($config['base_url'] ?? ''), '/');
+            $authMethod = (string) ($config['auth'] ?? 'token');
             $cacheDriver = $config['cache_driver'] ?? null;
-            $timeout     = (int) ($config['timeout'] ?? 30);
+            $timeout = (int) ($config['timeout'] ?? 30);
 
             $auth = match ($authMethod) {
                 'oauth' => new OAuthAuthenticator(
-                    baseUrl:      $baseUrl,
-                    clientId:     (string) ($config['client_id'] ?? ''),
+                    baseUrl: $baseUrl,
+                    clientId: (string) ($config['client_id'] ?? ''),
                     clientSecret: (string) ($config['client_secret'] ?? ''),
-                    cacheDriver:  $cacheDriver,
+                    cacheDriver: $cacheDriver,
                 ),
                 default => new TokenAuthenticator(
-                    baseUrl:     $baseUrl,
-                    username:    (string) ($config['username'] ?? ''),
-                    password:    (string) ($config['password'] ?? ''),
+                    baseUrl: $baseUrl,
+                    username: (string) ($config['username'] ?? ''),
+                    password: (string) ($config['password'] ?? ''),
                     cacheDriver: $cacheDriver,
                 ),
             };
@@ -55,7 +54,7 @@ class JamfServiceProvider extends ServiceProvider
             return new JamfClient(
                 new JamfHttpClient(
                     baseUrl: $baseUrl,
-                    auth:    $auth,
+                    auth: $auth,
                     timeout: $timeout,
                 )
             );
@@ -67,7 +66,7 @@ class JamfServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__ . '/../config/jamf.php' => $this->app->configPath('jamf.php'),
+            __DIR__.'/../config/jamf.php' => $this->app->configPath('jamf.php'),
         ], 'jamf-config');
     }
 }

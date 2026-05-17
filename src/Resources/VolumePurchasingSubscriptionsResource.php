@@ -22,15 +22,15 @@ class VolumePurchasingSubscriptionsResource extends AbstractResource
     public function list(int $page = 0, int $pageSize = 100): Page
     {
         $response = $this->http->get('/v1/volume-purchasing-subscriptions', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -47,7 +47,7 @@ class VolumePurchasingSubscriptionsResource extends AbstractResource
     /**
      * Create a new Volume Purchasing subscription.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function create(array $data): array
@@ -58,7 +58,7 @@ class VolumePurchasingSubscriptionsResource extends AbstractResource
     /**
      * Update a Volume Purchasing subscription (full replacement).
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function update(string $id, array $data): array

@@ -24,24 +24,22 @@ class MobileDevicePrestagesResource extends AbstractResource
     /**
      * List all mobile device prestages.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
      * @param  list<string>  $sort
      * @return Page<MobileDevicePrestage>
      */
     public function list(int $page = 0, int $pageSize = 100, array $sort = []): Page
     {
         $response = $this->http->get('/v2/mobile-device-prestages', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
+            'sort' => $sort ?: null,
         ]));
 
         return new Page(
-            results:    array_map(MobileDevicePrestage::fromArray(...), $response->json('results', [])),
+            results: array_map(MobileDevicePrestage::fromArray(...), $response->json('results', [])),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -58,7 +56,7 @@ class MobileDevicePrestagesResource extends AbstractResource
     /**
      * Create a new mobile device prestage.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public function create(array $data): MobileDevicePrestage
     {
@@ -70,7 +68,7 @@ class MobileDevicePrestagesResource extends AbstractResource
     /**
      * Update a mobile device prestage (full replacement).
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public function update(string $id, array $data): MobileDevicePrestage
     {
@@ -101,13 +99,12 @@ class MobileDevicePrestagesResource extends AbstractResource
      * Replace the entire scope of a mobile device prestage.
      *
      * @param  list<string>  $serialNumbers
-     * @param  int           $versionLock
      */
     public function replaceScope(string $id, array $serialNumbers, int $versionLock): array
     {
         return $this->http->put("/v2/mobile-device-prestages/{$id}/scope", [
             'serialNumbers' => $serialNumbers,
-            'versionLock'   => $versionLock,
+            'versionLock' => $versionLock,
         ])->json();
     }
 
@@ -115,13 +112,12 @@ class MobileDevicePrestagesResource extends AbstractResource
      * Add serial numbers to the scope of a mobile device prestage.
      *
      * @param  list<string>  $serialNumbers
-     * @param  int           $versionLock
      */
     public function addToScope(string $id, array $serialNumbers, int $versionLock): array
     {
         return $this->http->post("/v2/mobile-device-prestages/{$id}/scope", [
             'serialNumbers' => $serialNumbers,
-            'versionLock'   => $versionLock,
+            'versionLock' => $versionLock,
         ])->json();
     }
 
@@ -129,13 +125,12 @@ class MobileDevicePrestagesResource extends AbstractResource
      * Remove serial numbers from the scope of a mobile device prestage.
      *
      * @param  list<string>  $serialNumbers
-     * @param  int           $versionLock
      */
     public function removeFromScope(string $id, array $serialNumbers, int $versionLock): array
     {
         return $this->http->post("/v2/mobile-device-prestages/{$id}/scope/delete-multiple", [
             'serialNumbers' => $serialNumbers,
-            'versionLock'   => $versionLock,
+            'versionLock' => $versionLock,
         ])->json();
     }
 

@@ -28,7 +28,7 @@ class TeacherAppResource extends AbstractResource
     /**
      * Update Teacher app settings.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function save(array $data): array

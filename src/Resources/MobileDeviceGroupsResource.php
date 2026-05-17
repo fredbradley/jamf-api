@@ -31,15 +31,15 @@ class MobileDeviceGroupsResource extends AbstractResource
     public function smart(int $page = 0, int $pageSize = 100): Page
     {
         $response = $this->http->get('/v2/smart-mobile-device-groups', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -51,15 +51,15 @@ class MobileDeviceGroupsResource extends AbstractResource
     public function static(int $page = 0, int $pageSize = 100): Page
     {
         $response = $this->http->get('/v2/static-mobile-device-groups', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 }

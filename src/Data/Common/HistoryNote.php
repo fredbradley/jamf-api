@@ -23,16 +23,16 @@ readonly class HistoryNote
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         return new self(
-            id:       (int) ($data['id'] ?? 0),
+            id: (int) ($data['id'] ?? 0),
             username: $data['username'] ?? '',
-            date:     $data['date'] ?? '',
-            note:     $data['note'] ?? '',
-            details:  $data['details'] ?? null,
+            date: $data['date'] ?? '',
+            note: $data['note'] ?? '',
+            details: $data['details'] ?? null,
         );
     }
 }

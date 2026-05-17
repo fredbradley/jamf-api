@@ -12,13 +12,13 @@ beforeEach(fn () => Cache::flush());
 it('obtains a bearer token via basic auth', function (): void {
     Http::fake([
         'jamf.example.com/api/v1/auth/token' => Http::response([
-            'token'   => 'my-test-token',
+            'token' => 'my-test-token',
             'expires' => now()->addMinutes(30)->toIso8601String(),
         ]),
     ]);
 
     $auth = new TokenAuthenticator(
-        baseUrl:  'https://jamf.example.com',
+        baseUrl: 'https://jamf.example.com',
         username: 'user',
         password: 'pass',
     );
@@ -29,7 +29,7 @@ it('obtains a bearer token via basic auth', function (): void {
 it('caches the token and does not re-request on second call', function (): void {
     Http::fake([
         'jamf.example.com/api/v1/auth/token' => Http::response([
-            'token'   => 'cached-token',
+            'token' => 'cached-token',
             'expires' => now()->addMinutes(30)->toIso8601String(),
         ]),
     ]);
@@ -55,7 +55,7 @@ it('throws AuthenticationException on 401', function (): void {
 it('returns false for shouldRefresh when token is fresh', function (): void {
     Http::fake([
         'jamf.example.com/api/v1/auth/token' => Http::response([
-            'token'   => 'fresh-token',
+            'token' => 'fresh-token',
             'expires' => now()->addMinutes(30)->toIso8601String(),
         ]),
     ]);

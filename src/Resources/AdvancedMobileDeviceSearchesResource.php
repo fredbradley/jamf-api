@@ -17,22 +17,20 @@ class AdvancedMobileDeviceSearchesResource extends AbstractResource
     /**
      * List all advanced mobile device searches.
      *
-     * @param  int  $page
-     * @param  int  $pageSize
      * @return Page<array<string,mixed>>
      */
     public function list(int $page = 0, int $pageSize = 100): Page
     {
         $response = $this->http->get('/v1/advanced-mobile-device-searches', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -59,7 +57,7 @@ class AdvancedMobileDeviceSearchesResource extends AbstractResource
     /**
      * Create a new advanced mobile device search.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function create(array $data): array
@@ -70,7 +68,7 @@ class AdvancedMobileDeviceSearchesResource extends AbstractResource
     /**
      * Update an advanced mobile device search (full replacement).
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function update(string $id, array $data): array

@@ -55,32 +55,32 @@ readonly class MobileDeviceSummary
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         return new self(
-            id:                      (string) ($data['id'] ?? ''),
-            udid:                    $data['udid'] ?? '',
-            name:                    $data['name'] ?? null,
-            serialNumber:            $data['serialNumber'] ?? null,
-            wifiMacAddress:          $data['wifiMacAddress'] ?? null,
-            bluetoothMacAddress:     $data['bluetoothMacAddress'] ?? null,
-            assetTag:                $data['assetTag'] ?? null,
-            model:                   $data['model'] ?? null,
-            modelIdentifier:         $data['modelIdentifier'] ?? null,
-            osVersion:               $data['osVersion'] ?? null,
-            osBuild:                 $data['osBuild'] ?? null,
-            phoneNumber:             $data['phoneNumber'] ?? null,
-            iccid:                   $data['iccid'] ?? null,
-            imei:                    $data['imei'] ?? null,
-            managed:                 (bool) ($data['managed'] ?? false),
-            supervised:              (bool) ($data['supervised'] ?? false),
-            username:                $data['username'] ?? null,
-            realName:                $data['realName'] ?? null,
-            email:                   $data['email'] ?? null,
+            id: (string) ($data['id'] ?? ''),
+            udid: $data['udid'] ?? '',
+            name: $data['name'] ?? null,
+            serialNumber: $data['serialNumber'] ?? null,
+            wifiMacAddress: $data['wifiMacAddress'] ?? null,
+            bluetoothMacAddress: $data['bluetoothMacAddress'] ?? null,
+            assetTag: $data['assetTag'] ?? null,
+            model: $data['model'] ?? null,
+            modelIdentifier: $data['modelIdentifier'] ?? null,
+            osVersion: $data['osVersion'] ?? null,
+            osBuild: $data['osBuild'] ?? null,
+            phoneNumber: $data['phoneNumber'] ?? null,
+            iccid: $data['iccid'] ?? null,
+            imei: $data['imei'] ?? null,
+            managed: (bool) ($data['managed'] ?? false),
+            supervised: (bool) ($data['supervised'] ?? false),
+            username: $data['username'] ?? null,
+            realName: $data['realName'] ?? null,
+            email: $data['email'] ?? null,
             lastInventoryUpdateDate: $data['lastInventoryUpdateDate'] ?? null,
-            site:                    $data['site']['name'] ?? $data['site'] ?? null,
+            site: $data['site']['name'] ?? $data['site'] ?? null,
         );
     }
 }

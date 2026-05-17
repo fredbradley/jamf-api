@@ -25,17 +25,17 @@ readonly class AccountGroup
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         return new self(
-            id:           (string) ($data['id'] ?? ''),
-            name:         $data['name'] ?? '',
-            accessLevel:  $data['accessLevel'] ?? null,
+            id: (string) ($data['id'] ?? ''),
+            name: $data['name'] ?? '',
+            accessLevel: $data['accessLevel'] ?? null,
             privilegeSet: $data['privilegeSet'] ?? null,
             ldapServerId: isset($data['ldapServer']['id']) ? (string) $data['ldapServer']['id'] : null,
-            memberCount:  (int) ($data['memberCount'] ?? 0),
+            memberCount: (int) ($data['memberCount'] ?? 0),
         );
     }
 }

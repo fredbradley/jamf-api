@@ -66,37 +66,37 @@ readonly class ComputerDetail
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         return new self(
-            id:                    (string) ($data['id'] ?? ''),
-            udid:                  $data['udid'] ?? '',
-            general:               $data['general'] ?? null,
-            diskEncryption:        $data['diskEncryption'] ?? null,
-            purchasing:            $data['purchasing'] ?? null,
-            applications:          $data['applications'] ?? null,
-            storage:               $data['storage'] ?? null,
-            userAndLocation:       $data['userAndLocation'] ?? null,
+            id: (string) ($data['id'] ?? ''),
+            udid: $data['udid'] ?? '',
+            general: $data['general'] ?? null,
+            diskEncryption: $data['diskEncryption'] ?? null,
+            purchasing: $data['purchasing'] ?? null,
+            applications: $data['applications'] ?? null,
+            storage: $data['storage'] ?? null,
+            userAndLocation: $data['userAndLocation'] ?? null,
             configurationProfiles: $data['configurationProfiles'] ?? null,
-            printers:              $data['printers'] ?? null,
-            services:              $data['services'] ?? null,
-            hardware:              $data['hardware'] ?? null,
-            localUserAccounts:     $data['localUserAccounts'] ?? null,
-            certificates:          $data['certificates'] ?? null,
-            attachments:           $data['attachments'] ?? null,
-            plugins:               $data['plugins'] ?? null,
-            packageReceipts:       $data['packageReceipts'] ?? null,
-            fonts:                 $data['fonts'] ?? null,
-            security:              $data['security'] ?? null,
-            operatingSystem:       $data['operatingSystem'] ?? null,
-            licensedSoftware:      $data['licensedSoftware'] ?? null,
-            ibeacons:              $data['ibeacons'] ?? null,
-            softwareUpdates:       $data['softwareUpdates'] ?? null,
-            extensionAttributes:   $data['extensionAttributes'] ?? null,
-            contentCaching:        $data['contentCaching'] ?? null,
-            groupMemberships:      $data['groupMemberships'] ?? null,
+            printers: $data['printers'] ?? null,
+            services: $data['services'] ?? null,
+            hardware: $data['hardware'] ?? null,
+            localUserAccounts: $data['localUserAccounts'] ?? null,
+            certificates: $data['certificates'] ?? null,
+            attachments: $data['attachments'] ?? null,
+            plugins: $data['plugins'] ?? null,
+            packageReceipts: $data['packageReceipts'] ?? null,
+            fonts: $data['fonts'] ?? null,
+            security: $data['security'] ?? null,
+            operatingSystem: $data['operatingSystem'] ?? null,
+            licensedSoftware: $data['licensedSoftware'] ?? null,
+            ibeacons: $data['ibeacons'] ?? null,
+            softwareUpdates: $data['softwareUpdates'] ?? null,
+            extensionAttributes: $data['extensionAttributes'] ?? null,
+            contentCaching: $data['contentCaching'] ?? null,
+            groupMemberships: $data['groupMemberships'] ?? null,
         );
     }
 }

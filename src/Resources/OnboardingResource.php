@@ -28,7 +28,7 @@ class OnboardingResource extends AbstractResource
     /**
      * Update the onboarding configuration.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function save(array $data): array

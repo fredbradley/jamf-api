@@ -15,7 +15,7 @@ readonly class Site
     ) {}
 
     /**
-     * @param array<string,mixed>|null $data
+     * @param  array<string,mixed>|null  $data
      */
     public static function fromArray(?array $data): ?self
     {
@@ -24,7 +24,7 @@ readonly class Site
         }
 
         return new self(
-            id:   (string) ($data['id'] ?? ''),
+            id: (string) ($data['id'] ?? ''),
             name: $data['name'] ?? '',
         );
     }

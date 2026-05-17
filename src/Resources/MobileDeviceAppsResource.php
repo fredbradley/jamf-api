@@ -16,10 +16,7 @@ class MobileDeviceAppsResource extends AbstractResource
     /**
      * List all mobile device managed apps.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
      * @param  list<string>  $sort
-     * @param  string|null   $filter
      * @return Page<array<string,mixed>>
      */
     public function list(
@@ -29,17 +26,17 @@ class MobileDeviceAppsResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v1/mobile-device-apps', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -56,7 +53,7 @@ class MobileDeviceAppsResource extends AbstractResource
     /**
      * Create a new mobile device managed app record.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function create(array $data): array
@@ -67,7 +64,7 @@ class MobileDeviceAppsResource extends AbstractResource
     /**
      * Update a mobile device managed app (full replacement).
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function update(string $id, array $data): array

@@ -21,22 +21,22 @@ class RemoteAdministrationResource extends AbstractResource
     public function list(int $page = 0, int $pageSize = 100): Page
     {
         $response = $this->http->get('/preview/remote-administration-configurations', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
     /**
      * Create a new Team Viewer remote administration configuration.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function createTeamViewer(array $data): array
@@ -57,7 +57,7 @@ class RemoteAdministrationResource extends AbstractResource
     /**
      * Update a Team Viewer configuration.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function updateTeamViewer(string $id, array $data): array
@@ -96,17 +96,17 @@ class RemoteAdministrationResource extends AbstractResource
         );
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
     /**
      * Create a new remote support session.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function createSession(string $configurationId, array $data): array

@@ -41,27 +41,27 @@ readonly class ComputerPrestage
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         return new self(
-            id:                               (string) ($data['id'] ?? ''),
-            displayName:                      $data['displayName'] ?? '',
-            defaultPrestage:                  (bool) ($data['defaultPrestage'] ?? false),
-            enrollmentSiteId:                 (bool) ($data['enrollmentSiteId'] ?? false),
-            keepExistingAccountSettings:      (bool) ($data['keepExistingAccountSettings'] ?? false),
-            requireAuthentication:            (bool) ($data['requireAuthentication'] ?? false),
-            authenticationPrompt:             $data['authenticationPrompt'] ?? null,
-            preventActivationLock:            (bool) ($data['preventActivationLock'] ?? false),
-            enableDeviceBasedActivationLock:  (bool) ($data['enableDeviceBasedActivationLock'] ?? false),
+            id: (string) ($data['id'] ?? ''),
+            displayName: $data['displayName'] ?? '',
+            defaultPrestage: (bool) ($data['defaultPrestage'] ?? false),
+            enrollmentSiteId: (bool) ($data['enrollmentSiteId'] ?? false),
+            keepExistingAccountSettings: (bool) ($data['keepExistingAccountSettings'] ?? false),
+            requireAuthentication: (bool) ($data['requireAuthentication'] ?? false),
+            authenticationPrompt: $data['authenticationPrompt'] ?? null,
+            preventActivationLock: (bool) ($data['preventActivationLock'] ?? false),
+            enableDeviceBasedActivationLock: (bool) ($data['enableDeviceBasedActivationLock'] ?? false),
             deviceEnrollmentProgramInstanceId: isset($data['deviceEnrollmentProgramInstanceId'])
                 ? (string) $data['deviceEnrollmentProgramInstanceId']
                 : null,
-            siteId:                           isset($data['siteId']) ? (string) $data['siteId'] : null,
-            versionLock:                      (int) ($data['versionLock'] ?? 0),
-            managementAccount:                $data['managementAccount'] ?? null,
-            modificationDate:                 $data['modificationDate'] ?? null,
+            siteId: isset($data['siteId']) ? (string) $data['siteId'] : null,
+            versionLock: (int) ($data['versionLock'] ?? 0),
+            managementAccount: $data['managementAccount'] ?? null,
+            modificationDate: $data['modificationDate'] ?? null,
         );
     }
 }

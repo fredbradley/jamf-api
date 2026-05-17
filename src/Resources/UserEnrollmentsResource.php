@@ -16,10 +16,7 @@ class UserEnrollmentsResource extends AbstractResource
     /**
      * List all user enrollment records.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
      * @param  list<string>  $sort
-     * @param  string|null   $filter
      * @return Page<array<string,mixed>>
      */
     public function list(
@@ -29,17 +26,17 @@ class UserEnrollmentsResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v1/user-enrollments', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -69,15 +66,15 @@ class UserEnrollmentsResource extends AbstractResource
     public function devices(string $id, int $page = 0, int $pageSize = 100): Page
     {
         $response = $this->http->get("/v1/user-enrollments/{$id}/devices", $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 }

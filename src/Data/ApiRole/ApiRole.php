@@ -16,20 +16,21 @@ readonly class ApiRole
         public string $displayName,
         /**
          * List of privilege strings assigned to this role.
+         *
          * @var list<string>
          */
         public array $privileges,
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         return new self(
-            id:          (string) ($data['id'] ?? ''),
+            id: (string) ($data['id'] ?? ''),
             displayName: $data['displayName'] ?? '',
-            privileges:  $data['privileges'] ?? [],
+            privileges: $data['privileges'] ?? [],
         );
     }
 }

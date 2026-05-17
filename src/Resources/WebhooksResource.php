@@ -23,10 +23,7 @@ class WebhooksResource extends AbstractResource
     /**
      * List all webhooks.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
      * @param  list<string>  $sort
-     * @param  string|null   $filter
      * @return Page<Webhook>
      */
     public function list(
@@ -36,17 +33,17 @@ class WebhooksResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v1/webhooks', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    array_map(Webhook::fromArray(...), $response->json('results', [])),
+            results: array_map(Webhook::fromArray(...), $response->json('results', [])),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -61,7 +58,7 @@ class WebhooksResource extends AbstractResource
     /**
      * Create a new webhook.
      *
-     * @param  array<string,mixed> $data  Webhook properties (name, url, event, contentType, enabled, etc.).
+     * @param  array<string,mixed>  $data  Webhook properties (name, url, event, contentType, enabled, etc.).
      */
     public function create(array $data): Webhook
     {
@@ -71,7 +68,7 @@ class WebhooksResource extends AbstractResource
     /**
      * Update an existing webhook (full replacement).
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public function update(string $id, array $data): Webhook
     {

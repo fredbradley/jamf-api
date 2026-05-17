@@ -21,18 +21,18 @@ class ComputerInventoryResource extends AbstractResource
     /**
      * List computers with optional filtering, sorting, and section selection.
      *
-     * @param  int                $page      Zero-based page index.
-     * @param  int                $pageSize  Results per page.
-     * @param  list<string>       $sort      Sort fields, e.g. ['general.name:asc'].
-     * @param  string|null        $filter    RSQL filter, e.g. 'general.name=="MacBook*"'.
-     * @param  list<string>       $section   Inventory sections to include in the response.
-     *                                       Default includes only general fields.
-     *                                       Available sections: GENERAL, DISK_ENCRYPTION, PURCHASING,
-     *                                       APPLICATIONS, STORAGE, USER_AND_LOCATION, CONFIGURATION_PROFILES,
-     *                                       PRINTERS, SERVICES, HARDWARE, LOCAL_USER_ACCOUNTS, CERTIFICATES,
-     *                                       ATTACHMENTS, PLUGINS, PACKAGE_RECEIPTS, FONTS, SECURITY,
-     *                                       OPERATING_SYSTEM, LICENSED_SOFTWARE, IBEACONS, SOFTWARE_UPDATES,
-     *                                       EXTENSION_ATTRIBUTES, CONTENT_CACHING, GROUP_MEMBERSHIPS
+     * @param  int  $page  Zero-based page index.
+     * @param  int  $pageSize  Results per page.
+     * @param  list<string>  $sort  Sort fields, e.g. ['general.name:asc'].
+     * @param  string|null  $filter  RSQL filter, e.g. 'general.name=="MacBook*"'.
+     * @param  list<string>  $section  Inventory sections to include in the response.
+     *                                 Default includes only general fields.
+     *                                 Available sections: GENERAL, DISK_ENCRYPTION, PURCHASING,
+     *                                 APPLICATIONS, STORAGE, USER_AND_LOCATION, CONFIGURATION_PROFILES,
+     *                                 PRINTERS, SERVICES, HARDWARE, LOCAL_USER_ACCOUNTS, CERTIFICATES,
+     *                                 ATTACHMENTS, PLUGINS, PACKAGE_RECEIPTS, FONTS, SECURITY,
+     *                                 OPERATING_SYSTEM, LICENSED_SOFTWARE, IBEACONS, SOFTWARE_UPDATES,
+     *                                 EXTENSION_ATTRIBUTES, CONTENT_CACHING, GROUP_MEMBERSHIPS
      * @return Page<ComputerSummary>
      */
     public function list(
@@ -43,18 +43,18 @@ class ComputerInventoryResource extends AbstractResource
         array $section = [],
     ): Page {
         $response = $this->http->get('/v2/computers-inventory', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
-            'section'   => $section ?: null,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
+            'section' => $section ?: null,
         ]));
 
         return new Page(
-            results:    array_map(ComputerSummary::fromArray(...), $response->json('results', [])),
+            results: array_map(ComputerSummary::fromArray(...), $response->json('results', [])),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -88,7 +88,7 @@ class ComputerInventoryResource extends AbstractResource
      *
      * Only the provided fields are updated; omitted fields remain unchanged.
      *
-     * @param  array<string,mixed> $data  Fields to update.
+     * @param  array<string,mixed>  $data  Fields to update.
      */
     public function patch(string $id, array $data): ComputerDetail
     {

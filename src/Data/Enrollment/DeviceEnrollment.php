@@ -49,29 +49,29 @@ readonly class DeviceEnrollment
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         return new self(
-            id:                  (string) ($data['id'] ?? ''),
-            name:                $data['name'] ?? '',
-            supervisorName:      $data['supervisorName'] ?? null,
-            supervisorPhone:     $data['supervisorPhone'] ?? null,
-            supervisorEmail:     $data['supervisorEmail'] ?? null,
-            serverName:          $data['serverName'] ?? null,
-            serverUuid:          $data['serverUuid'] ?? null,
-            adminId:             $data['adminId'] ?? null,
-            orgName:             $data['orgName'] ?? null,
-            orgPhone:            $data['orgPhone'] ?? null,
-            orgAddress:          $data['orgAddress'] ?? null,
-            orgAddress2:         $data['orgAddress2'] ?? null,
-            orgCity:             $data['orgCity'] ?? null,
-            orgStateOrProvince:  $data['orgStateOrProvince'] ?? null,
-            orgZipOrPostalCode:  $data['orgZipOrPostalCode'] ?? null,
-            orgCountry:          $data['orgCountry'] ?? null,
+            id: (string) ($data['id'] ?? ''),
+            name: $data['name'] ?? '',
+            supervisorName: $data['supervisorName'] ?? null,
+            supervisorPhone: $data['supervisorPhone'] ?? null,
+            supervisorEmail: $data['supervisorEmail'] ?? null,
+            serverName: $data['serverName'] ?? null,
+            serverUuid: $data['serverUuid'] ?? null,
+            adminId: $data['adminId'] ?? null,
+            orgName: $data['orgName'] ?? null,
+            orgPhone: $data['orgPhone'] ?? null,
+            orgAddress: $data['orgAddress'] ?? null,
+            orgAddress2: $data['orgAddress2'] ?? null,
+            orgCity: $data['orgCity'] ?? null,
+            orgStateOrProvince: $data['orgStateOrProvince'] ?? null,
+            orgZipOrPostalCode: $data['orgZipOrPostalCode'] ?? null,
+            orgCountry: $data['orgCountry'] ?? null,
             tokenExpirationDate: $data['tokenExpirationDate'] ?? null,
-            lastSyncDate:        $data['lastSyncDate'] ?? null,
+            lastSyncDate: $data['lastSyncDate'] ?? null,
         );
     }
 }

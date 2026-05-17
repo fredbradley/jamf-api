@@ -15,7 +15,7 @@ class IconsResource extends AbstractResource
      * Upload a new icon image.
      *
      * @param  string  $filePath  Local path to the image file (PNG or JPG).
-     * @return array{id: int, url: string}  The uploaded icon ID and URL.
+     * @return array{id: int, url: string} The uploaded icon ID and URL.
      */
     public function upload(string $filePath): array
     {
@@ -29,7 +29,7 @@ class IconsResource extends AbstractResource
      *
      * Returns the raw binary image content.
      *
-     * @param  int   $id    Icon ID.
+     * @param  int  $id  Icon ID.
      * @param  bool  $size  Whether to download the full-size (320px) version.
      */
     public function download(int $id, bool $size = false): string

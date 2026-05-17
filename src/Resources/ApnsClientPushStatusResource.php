@@ -16,10 +16,7 @@ class ApnsClientPushStatusResource extends AbstractResource
     /**
      * Search for managed clients with disabled APNS push notifications.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
      * @param  list<string>  $sort
-     * @param  string|null   $filter
      * @return Page<array<string,mixed>>
      */
     public function search(
@@ -29,17 +26,17 @@ class ApnsClientPushStatusResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v1/apns-client-push-status', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 }

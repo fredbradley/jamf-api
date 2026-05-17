@@ -23,10 +23,8 @@ class ScriptsResource extends AbstractResource
     /**
      * List all scripts with optional filtering and sorting.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
-     * @param  list<string>  $sort     e.g. ['name:asc'].
-     * @param  string|null   $filter   RSQL filter, e.g. 'name=="Deploy*"'.
+     * @param  list<string>  $sort  e.g. ['name:asc'].
+     * @param  string|null  $filter  RSQL filter, e.g. 'name=="Deploy*"'.
      * @return Page<Script>
      */
     public function list(
@@ -36,17 +34,17 @@ class ScriptsResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v1/scripts', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    array_map(Script::fromArray(...), $response->json('results', [])),
+            results: array_map(Script::fromArray(...), $response->json('results', [])),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -61,7 +59,7 @@ class ScriptsResource extends AbstractResource
     /**
      * Create a new script.
      *
-     * @param  array<string,mixed> $data  Script properties including 'name' and 'scriptContents'.
+     * @param  array<string,mixed>  $data  Script properties including 'name' and 'scriptContents'.
      */
     public function create(array $data): Script
     {
@@ -71,7 +69,7 @@ class ScriptsResource extends AbstractResource
     /**
      * Update an existing script (full replacement).
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public function update(string $id, array $data): Script
     {

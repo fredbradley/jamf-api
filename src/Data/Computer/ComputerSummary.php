@@ -55,36 +55,36 @@ readonly class ComputerSummary
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
-        $general  = $data['general'] ?? $data;
+        $general = $data['general'] ?? $data;
         $hardware = $data['hardware'] ?? [];
         $userInfo = $data['userAndLocation'] ?? [];
 
         return new self(
-            id:               (string) ($data['id'] ?? ''),
-            udid:             $data['udid'] ?? '',
-            name:             $general['name'] ?? $data['name'] ?? null,
-            serialNumber:     $hardware['serialNumber'] ?? $data['serialNumber'] ?? null,
-            assetTag:         $general['assetTag'] ?? $data['assetTag'] ?? null,
-            lastContactTime:  $general['lastContactTime'] ?? $data['lastContactTime'] ?? null,
-            lastReportDate:   $general['reportDate'] ?? $data['lastReportDate'] ?? null,
+            id: (string) ($data['id'] ?? ''),
+            udid: $data['udid'] ?? '',
+            name: $general['name'] ?? $data['name'] ?? null,
+            serialNumber: $hardware['serialNumber'] ?? $data['serialNumber'] ?? null,
+            assetTag: $general['assetTag'] ?? $data['assetTag'] ?? null,
+            lastContactTime: $general['lastContactTime'] ?? $data['lastContactTime'] ?? null,
+            lastReportDate: $general['reportDate'] ?? $data['lastReportDate'] ?? null,
             lastEnrolledDate: $general['lastEnrolledDate'] ?? $data['lastEnrolledDate'] ?? null,
-            osVersion:        $data['operatingSystemVersion'] ?? $hardware['osVersion'] ?? null,
-            ipAddress:        $general['lastIpAddress'] ?? $data['primaryIpAddress'] ?? null,
-            username:         $userInfo['username'] ?? $data['username'] ?? null,
-            realName:         $userInfo['realName'] ?? $data['realName'] ?? null,
-            email:            $userInfo['email'] ?? $data['email'] ?? null,
-            department:       $userInfo['department'] ?? $data['department'] ?? null,
-            building:         $userInfo['building'] ?? $data['building'] ?? null,
-            macAddress:       $hardware['macAddress'] ?? $data['macAddress'] ?? null,
-            model:            $hardware['model'] ?? $data['model'] ?? null,
-            modelIdentifier:  $hardware['modelIdentifier'] ?? $data['modelIdentifier'] ?? null,
-            managed:          (bool) ($general['remoteManagement']['managed'] ?? $data['managed'] ?? false),
-            supervised:       (bool) ($general['supervised'] ?? $data['supervised'] ?? false),
-            site:             $general['site']['name'] ?? $data['site'] ?? null,
+            osVersion: $data['operatingSystemVersion'] ?? $hardware['osVersion'] ?? null,
+            ipAddress: $general['lastIpAddress'] ?? $data['primaryIpAddress'] ?? null,
+            username: $userInfo['username'] ?? $data['username'] ?? null,
+            realName: $userInfo['realName'] ?? $data['realName'] ?? null,
+            email: $userInfo['email'] ?? $data['email'] ?? null,
+            department: $userInfo['department'] ?? $data['department'] ?? null,
+            building: $userInfo['building'] ?? $data['building'] ?? null,
+            macAddress: $hardware['macAddress'] ?? $data['macAddress'] ?? null,
+            model: $hardware['model'] ?? $data['model'] ?? null,
+            modelIdentifier: $hardware['modelIdentifier'] ?? $data['modelIdentifier'] ?? null,
+            managed: (bool) ($general['remoteManagement']['managed'] ?? $data['managed'] ?? false),
+            supervised: (bool) ($general['supervised'] ?? $data['supervised'] ?? false),
+            site: $general['site']['name'] ?? $data['site'] ?? null,
         );
     }
 }

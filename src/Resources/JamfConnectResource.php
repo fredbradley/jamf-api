@@ -28,7 +28,7 @@ class JamfConnectResource extends AbstractResource
     /**
      * Update Jamf Connect settings.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function save(array $data): array
@@ -49,7 +49,7 @@ class JamfConnectResource extends AbstractResource
     /**
      * Update Jamf Connect deployment configurations.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function updateDeployments(array $data): array

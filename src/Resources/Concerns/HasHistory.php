@@ -18,10 +18,10 @@ trait HasHistory
     /**
      * Retrieve history entries for this resource.
      *
-     * @param  int            $page      Zero-based page index.
-     * @param  int            $pageSize  Number of results per page.
-     * @param  list<string>   $sort      Sort fields, e.g. ['date:desc', 'username:asc'].
-     * @param  string|null    $filter    RSQL filter string, e.g. 'username=="admin"'.
+     * @param  int  $page  Zero-based page index.
+     * @param  int  $pageSize  Number of results per page.
+     * @param  list<string>  $sort  Sort fields, e.g. ['date:desc', 'username:asc'].
+     * @param  string|null  $filter  RSQL filter string, e.g. 'username=="admin"'.
      * @return Page<HistoryNote>
      */
     public function history(
@@ -31,17 +31,17 @@ trait HasHistory
         ?string $filter = null,
     ): Page {
         $response = $this->http->get($this->historyPath(), $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    array_map(HistoryNote::fromArray(...), $response->json('results', [])),
+            results: array_map(HistoryNote::fromArray(...), $response->json('results', [])),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -50,7 +50,7 @@ trait HasHistory
      */
     public function addHistoryNote(string $note): HistoryNote
     {
-        $response = $this->http->post($this->historyPath() . '/notes', ['note' => $note]);
+        $response = $this->http->post($this->historyPath().'/notes', ['note' => $note]);
 
         return HistoryNote::fromArray($response->json());
     }

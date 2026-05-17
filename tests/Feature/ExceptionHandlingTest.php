@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Cranleigh\JamfApi\Exceptions\AuthenticationException;
 use Cranleigh\JamfApi\Exceptions\ForbiddenException;
 use Cranleigh\JamfApi\Exceptions\NotFoundException;
 use Cranleigh\JamfApi\Exceptions\RateLimitException;
@@ -15,7 +14,7 @@ beforeEach(function (): void {
 
     Http::fake([
         'jamf.example.com/api/v1/auth/token' => Http::response([
-            'token'   => 'token',
+            'token' => 'token',
             'expires' => now()->addMinutes(30)->toIso8601String(),
         ]),
     ]);

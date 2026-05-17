@@ -17,24 +17,22 @@ class SupervisionIdentitiesResource extends AbstractResource
     /**
      * List all supervision identities.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
      * @param  list<string>  $sort
      * @return Page<array<string,mixed>>
      */
     public function list(int $page = 0, int $pageSize = 100, array $sort = []): Page
     {
         $response = $this->http->get('/v2/supervision-identities', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
+            'sort' => $sort ?: null,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -51,7 +49,7 @@ class SupervisionIdentitiesResource extends AbstractResource
     /**
      * Create a new supervision identity.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function create(array $data): array
@@ -62,7 +60,7 @@ class SupervisionIdentitiesResource extends AbstractResource
     /**
      * Update a supervision identity (full replacement).
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function update(string $id, array $data): array
@@ -83,7 +81,7 @@ class SupervisionIdentitiesResource extends AbstractResource
      *
      * Returns the raw binary content of the PKCS#12 file.
      *
-     * @param  string  $id        Supervision identity ID.
+     * @param  string  $id  Supervision identity ID.
      * @param  string  $password  The passphrase for the .p12 file.
      */
     public function download(string $id, string $password): string

@@ -25,7 +25,7 @@ class CloudLdapResource extends AbstractResource
     /**
      * Create a new Cloud LDAP server configuration.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function create(array $data): array
@@ -46,7 +46,7 @@ class CloudLdapResource extends AbstractResource
     /**
      * Update a Cloud LDAP server configuration (full replacement).
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function update(string $id, array $data): array
@@ -57,7 +57,7 @@ class CloudLdapResource extends AbstractResource
     /**
      * Partially update a Cloud LDAP server configuration.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function patch(string $id, array $data): array
@@ -96,7 +96,7 @@ class CloudLdapResource extends AbstractResource
     /**
      * Update the field mappings for a Cloud LDAP server.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function updateMappings(string $id, array $data): array
@@ -107,7 +107,7 @@ class CloudLdapResource extends AbstractResource
     /**
      * Test a group or user query against a Cloud LDAP server.
      *
-     * @param  array<string,mixed> $query  Test query parameters.
+     * @param  array<string,mixed>  $query  Test query parameters.
      * @return array<string,mixed>
      */
     public function testQuery(string $id, array $query): array

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Cranleigh\JamfApi\Auth\Contracts;
 
+use Cranleigh\JamfApi\Exceptions\AuthenticationException;
+
 /**
  * Authenticator contract for Jamf Pro API authentication.
  *
@@ -27,7 +29,7 @@ interface AuthenticatorInterface
     /**
      * Perform the token refresh/renewal operation.
      *
-     * @throws \Cranleigh\JamfApi\Exceptions\AuthenticationException
+     * @throws AuthenticationException
      */
     public function refresh(): void;
 }

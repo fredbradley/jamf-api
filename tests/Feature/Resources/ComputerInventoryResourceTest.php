@@ -14,12 +14,12 @@ beforeEach(function (): void {
 it('lists computers and returns a typed page', function (): void {
     Http::fake([
         'jamf.example.com/api/v1/auth/token' => Http::response([
-            'token'   => 'test-bearer-token',
+            'token' => 'test-bearer-token',
             'expires' => now()->addMinutes(30)->toIso8601String(),
         ]),
         'jamf.example.com/api/v2/computers-inventory*' => Http::response([
             'totalCount' => 2,
-            'results'    => [
+            'results' => [
                 ['id' => '1', 'udid' => 'UDID-1', 'name' => 'MacBook 1', 'managed' => true, 'supervised' => true],
                 ['id' => '2', 'udid' => 'UDID-2', 'name' => 'MacBook 2', 'managed' => false, 'supervised' => false],
             ],
@@ -39,20 +39,20 @@ it('lists computers and returns a typed page', function (): void {
 it('sends filter and sort parameters to the API', function (): void {
     Http::fake([
         'jamf.example.com/api/v1/auth/token' => Http::response([
-            'token'   => 'test-bearer-token',
+            'token' => 'test-bearer-token',
             'expires' => now()->addMinutes(30)->toIso8601String(),
         ]),
         'jamf.example.com/api/v2/computers-inventory*' => Http::response([
             'totalCount' => 0,
-            'results'    => [],
+            'results' => [],
         ]),
     ]);
 
     Jamf::computerInventory()->list(
-        page:    1,
+        page: 1,
         pageSize: 50,
-        sort:    ['general.name:asc'],
-        filter:  'general.name=="MacBook*"',
+        sort: ['general.name:asc'],
+        filter: 'general.name=="MacBook*"',
     );
 
     Http::assertSent(function ($request): bool {

@@ -6,6 +6,7 @@ namespace Cranleigh\JamfApi\Auth;
 
 use Cranleigh\JamfApi\Auth\Contracts\AuthenticatorInterface;
 use Cranleigh\JamfApi\Exceptions\AuthenticationException;
+use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -42,7 +43,7 @@ final class OAuthAuthenticator implements AuthenticatorInterface
             $this->initialize();
         }
 
-        return 'Bearer ' . $this->accessToken;
+        return 'Bearer '.$this->accessToken;
     }
 
     public function shouldRefresh(): bool
@@ -57,7 +58,7 @@ final class OAuthAuthenticator implements AuthenticatorInterface
     public function refresh(): void
     {
         $this->accessToken = null;
-        $this->expiresAt   = null;
+        $this->expiresAt = null;
         $this->cache()->forget(self::CACHE_KEY);
         $this->initialize();
     }
@@ -71,14 +72,14 @@ final class OAuthAuthenticator implements AuthenticatorInterface
 
         if ($cached !== null) {
             $this->accessToken = $cached['token'];
-            $this->expiresAt   = Carbon::parse($cached['expires']);
+            $this->expiresAt = Carbon::parse($cached['expires']);
 
             return;
         }
 
-        $response = Http::asForm()->post($this->baseUrl . '/api/oauth/token', [
-            'grant_type'    => 'client_credentials',
-            'client_id'     => $this->clientId,
+        $response = Http::asForm()->post($this->baseUrl.'/api/oauth/token', [
+            'grant_type' => 'client_credentials',
+            'client_id' => $this->clientId,
             'client_secret' => $this->clientSecret,
         ]);
 
@@ -91,15 +92,15 @@ final class OAuthAuthenticator implements AuthenticatorInterface
 
         if ($response->failed()) {
             throw new AuthenticationException(
-                'Jamf Pro OAuth token request failed: ' . $response->status(),
+                'Jamf Pro OAuth token request failed: '.$response->status(),
                 $response->status(),
             );
         }
 
-        $data              = $response->json();
+        $data = $response->json();
         $this->accessToken = $data['access_token'];
-        $ttl               = (int) ($data['expires_in'] ?? 1800);
-        $this->expiresAt   = now()->addSeconds($ttl);
+        $ttl = (int) ($data['expires_in'] ?? 1800);
+        $this->expiresAt = now()->addSeconds($ttl);
 
         $this->cache()->put(
             self::CACHE_KEY,
@@ -108,7 +109,7 @@ final class OAuthAuthenticator implements AuthenticatorInterface
         );
     }
 
-    private function cache(): \Illuminate\Contracts\Cache\Repository
+    private function cache(): Repository
     {
         return Cache::store($this->cacheDriver);
     }

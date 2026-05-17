@@ -12,10 +12,10 @@ namespace Cranleigh\JamfApi\Pagination;
 readonly class Page
 {
     /**
-     * @param list<T> $results     The items on this page.
-     * @param int     $totalCount  Total number of items across all pages.
-     * @param int     $pageNumber  Zero-based page index.
-     * @param int     $pageSize    Maximum items per page requested.
+     * @param  list<T>  $results  The items on this page.
+     * @param  int  $totalCount  Total number of items across all pages.
+     * @param  int  $pageNumber  Zero-based page index.
+     * @param  int  $pageSize  Maximum items per page requested.
      */
     public function __construct(
         public array $results,

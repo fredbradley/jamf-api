@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Cranleigh\JamfApi\Resources;
 
-use Cranleigh\JamfApi\Data\Common\HistoryNote;
-use Cranleigh\JamfApi\Pagination\Page;
 use Cranleigh\JamfApi\Resources\Concerns\HasHistory;
 
 /**
@@ -33,7 +31,7 @@ class EnrollmentResource extends AbstractResource
     /**
      * Update enrollment settings.
      *
-     * @param  array<string,mixed> $data  Enrollment settings payload.
+     * @param  array<string,mixed>  $data  Enrollment settings payload.
      * @return array<string,mixed>
      */
     public function save(array $data): array
@@ -65,8 +63,7 @@ class EnrollmentResource extends AbstractResource
     /**
      * Update enrollment messaging for a specific language.
      *
-     * @param  string              $languageId
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function updateLanguageMessaging(string $languageId, array $data): array

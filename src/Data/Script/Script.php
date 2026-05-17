@@ -49,28 +49,28 @@ readonly class Script
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         return new self(
-            id:               (string) ($data['id'] ?? ''),
-            name:             $data['name'] ?? '',
-            categoryName:     $data['categoryName'] ?? null,
-            categoryId:       isset($data['categoryId']) ? (string) $data['categoryId'] : null,
-            info:             $data['info'] ?? null,
-            notes:            $data['notes'] ?? null,
-            priority:         $data['priority'] ?? null,
-            parameter4:       $data['parameter4'] ?? null,
-            parameter5:       $data['parameter5'] ?? null,
-            parameter6:       $data['parameter6'] ?? null,
-            parameter7:       $data['parameter7'] ?? null,
-            parameter8:       $data['parameter8'] ?? null,
-            parameter9:       $data['parameter9'] ?? null,
-            parameter10:      $data['parameter10'] ?? null,
-            parameter11:      $data['parameter11'] ?? null,
-            osRequirements:   $data['osRequirements'] ?? null,
-            scriptContents:   $data['scriptContents'] ?? null,
+            id: (string) ($data['id'] ?? ''),
+            name: $data['name'] ?? '',
+            categoryName: $data['categoryName'] ?? null,
+            categoryId: isset($data['categoryId']) ? (string) $data['categoryId'] : null,
+            info: $data['info'] ?? null,
+            notes: $data['notes'] ?? null,
+            priority: $data['priority'] ?? null,
+            parameter4: $data['parameter4'] ?? null,
+            parameter5: $data['parameter5'] ?? null,
+            parameter6: $data['parameter6'] ?? null,
+            parameter7: $data['parameter7'] ?? null,
+            parameter8: $data['parameter8'] ?? null,
+            parameter9: $data['parameter9'] ?? null,
+            parameter10: $data['parameter10'] ?? null,
+            parameter11: $data['parameter11'] ?? null,
+            osRequirements: $data['osRequirements'] ?? null,
+            scriptContents: $data['scriptContents'] ?? null,
             modificationDate: $data['modificationDate'] ?? null,
         );
     }

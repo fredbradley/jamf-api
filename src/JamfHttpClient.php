@@ -34,7 +34,7 @@ final class JamfHttpClient
     /**
      * Send a GET request.
      *
-     * @param array<string,mixed> $query
+     * @param  array<string,mixed>  $query
      */
     public function get(string $path, array $query = []): Response
     {
@@ -44,7 +44,7 @@ final class JamfHttpClient
     /**
      * Send a POST request with a JSON body.
      *
-     * @param array<string,mixed> $body
+     * @param  array<string,mixed>  $body
      */
     public function post(string $path, array $body = []): Response
     {
@@ -54,7 +54,7 @@ final class JamfHttpClient
     /**
      * Send a PUT request with a JSON body.
      *
-     * @param array<string,mixed> $body
+     * @param  array<string,mixed>  $body
      */
     public function put(string $path, array $body = []): Response
     {
@@ -64,7 +64,7 @@ final class JamfHttpClient
     /**
      * Send a PATCH request with a JSON body.
      *
-     * @param array<string,mixed> $body
+     * @param  array<string,mixed>  $body
      */
     public function patch(string $path, array $body = []): Response
     {
@@ -84,7 +84,7 @@ final class JamfHttpClient
      *
      * Each part is an array with 'name', 'contents', and optionally 'filename'.
      *
-     * @param array<int, array{name: string, contents: mixed, filename?: string}> $parts
+     * @param  array<int, array{name: string, contents: mixed, filename?: string}>  $parts
      */
     public function postMultipart(string $path, array $parts): Response
     {
@@ -92,7 +92,7 @@ final class JamfHttpClient
 
         $pending = Http::withHeaders([
             'Authorization' => $this->auth->getAuthorizationHeader(),
-            'Accept'        => 'application/json',
+            'Accept' => 'application/json',
         ])->timeout($this->timeout)->baseUrl($this->baseUrl);
 
         foreach ($parts as $part) {
@@ -103,7 +103,7 @@ final class JamfHttpClient
             }
         }
 
-        $response = $pending->post('/api' . $path);
+        $response = $pending->post('/api'.$path);
 
         return $this->throwIfFailed($response);
     }
@@ -111,8 +111,8 @@ final class JamfHttpClient
     /**
      * Core request dispatcher.
      *
-     * @param array<string,mixed> $query
-     * @param array<string,mixed> $body
+     * @param  array<string,mixed>  $query
+     * @param  array<string,mixed>  $body
      */
     private function request(
         string $method,
@@ -124,21 +124,21 @@ final class JamfHttpClient
 
         $pending = Http::withHeaders([
             'Authorization' => $this->auth->getAuthorizationHeader(),
-            'Accept'        => 'application/json',
-            'Content-Type'  => 'application/json',
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
         ])
-        ->timeout($this->timeout)
-        ->baseUrl($this->baseUrl);
+            ->timeout($this->timeout)
+            ->baseUrl($this->baseUrl);
 
         $cleanQuery = $this->sanitiseQuery($query);
 
         $response = match ($method) {
-            'GET'    => $pending->get('/api' . $path, $cleanQuery ?: null),
-            'POST'   => $pending->post('/api' . $path, $body),
-            'PUT'    => $pending->put('/api' . $path, $body),
-            'PATCH'  => $pending->patch('/api' . $path, $body),
-            'DELETE' => $pending->delete('/api' . $path),
-            default  => throw new \InvalidArgumentException("Unsupported HTTP method: {$method}"),
+            'GET' => $pending->get('/api'.$path, $cleanQuery ?: null),
+            'POST' => $pending->post('/api'.$path, $body),
+            'PUT' => $pending->put('/api'.$path, $body),
+            'PATCH' => $pending->patch('/api'.$path, $body),
+            'DELETE' => $pending->delete('/api'.$path),
+            default => throw new \InvalidArgumentException("Unsupported HTTP method: {$method}"),
         };
 
         return $this->throwIfFailed($response);
@@ -158,7 +158,7 @@ final class JamfHttpClient
      * Remove null, empty string, and empty array values from query parameters.
      * Also serialises array values as comma-separated strings for RSQL sort params.
      *
-     * @param  array<string,mixed> $query
+     * @param  array<string,mixed>  $query
      * @return array<string,mixed>
      */
     private function sanitiseQuery(array $query): array
@@ -189,7 +189,7 @@ final class JamfHttpClient
         }
 
         $status = $response->status();
-        $body   = $response->json() ?? [];
+        $body = $response->json() ?? [];
         $errors = is_array($body) ? $body : [];
         $detail = $errors['detail'] ?? $errors['message'] ?? $errors['error'] ?? 'Unknown error';
 
@@ -199,8 +199,8 @@ final class JamfHttpClient
             $status === 404 => new NotFoundException("Jamf Pro API: Not Found — {$detail}", $status, $errors),
             $status === 422 => new UnprocessableEntityException("Jamf Pro API: Validation failed — {$detail}", $status, $errors),
             $status === 429 => new RateLimitException("Jamf Pro API: Rate limit exceeded — {$detail}", $status, $errors),
-            $status >= 500  => new ServerException("Jamf Pro API: Server error {$status} — {$detail}", $status, $errors),
-            default         => new JamfException("Jamf Pro API: HTTP {$status} — {$detail}", $status, $errors),
+            $status >= 500 => new ServerException("Jamf Pro API: Server error {$status} — {$detail}", $status, $errors),
+            default => new JamfException("Jamf Pro API: HTTP {$status} — {$detail}", $status, $errors),
         };
     }
 }

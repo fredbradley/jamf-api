@@ -53,31 +53,31 @@ readonly class JamfPackage
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         return new self(
-            id:                         (string) ($data['id'] ?? ''),
-            packageName:                $data['packageName'] ?? '',
-            fileName:                   $data['fileName'] ?? '',
-            categoryId:                 isset($data['categoryId']) ? (string) $data['categoryId'] : null,
-            info:                       $data['info'] ?? null,
-            notes:                      $data['notes'] ?? null,
-            priority:                   isset($data['priority']) ? (int) $data['priority'] : null,
-            rebootRequired:             (bool) ($data['rebootRequired'] ?? false),
-            fillUserTemplate:           (bool) ($data['fillUserTemplate'] ?? false),
-            fillExistingUsers:          (bool) ($data['fillExistingUsers'] ?? false),
-            allowUninstalled:           (bool) ($data['allowUninstalled'] ?? false),
-            osRequirements:             $data['osRequirements'] ?? null,
-            requiredProcessor:          $data['requiredProcessor'] ?? null,
-            switchWithPackage:          (bool) ($data['switchWithPackage'] ?? false),
+            id: (string) ($data['id'] ?? ''),
+            packageName: $data['packageName'] ?? '',
+            fileName: $data['fileName'] ?? '',
+            categoryId: isset($data['categoryId']) ? (string) $data['categoryId'] : null,
+            info: $data['info'] ?? null,
+            notes: $data['notes'] ?? null,
+            priority: isset($data['priority']) ? (int) $data['priority'] : null,
+            rebootRequired: (bool) ($data['rebootRequired'] ?? false),
+            fillUserTemplate: (bool) ($data['fillUserTemplate'] ?? false),
+            fillExistingUsers: (bool) ($data['fillExistingUsers'] ?? false),
+            allowUninstalled: (bool) ($data['allowUninstalled'] ?? false),
+            osRequirements: $data['osRequirements'] ?? null,
+            requiredProcessor: $data['requiredProcessor'] ?? null,
+            switchWithPackage: (bool) ($data['switchWithPackage'] ?? false),
             installIfReportedAvailable: (bool) ($data['installIfReportedAvailable'] ?? false),
-            md5:                        $data['md5'] ?? null,
-            sha256:                     $data['sha256'] ?? null,
-            hashValue:                  $data['hashValue'] ?? null,
-            hashType:                   $data['hashType'] ?? null,
-            packageSize:                isset($data['packageSize']) ? (int) $data['packageSize'] : null,
+            md5: $data['md5'] ?? null,
+            sha256: $data['sha256'] ?? null,
+            hashValue: $data['hashValue'] ?? null,
+            hashType: $data['hashType'] ?? null,
+            packageSize: isset($data['packageSize']) ? (int) $data['packageSize'] : null,
         );
     }
 }

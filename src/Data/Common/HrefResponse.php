@@ -19,16 +19,16 @@ readonly class HrefResponse
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         $href = $data['href'] ?? '';
-        $id   = null;
+        $id = null;
 
         if ($href !== '') {
             $parts = explode('/', $href);
-            $id    = end($parts) ?: null;
+            $id = end($parts) ?: null;
         }
 
         return new self(href: $href, id: $id);

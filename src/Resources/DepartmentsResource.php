@@ -17,18 +17,15 @@ use Cranleigh\JamfApi\Resources\Concerns\HasHistory;
  */
 class DepartmentsResource extends AbstractResource
 {
-    use HasHistory;
     use HasCsvExport;
+    use HasHistory;
 
     private string $currentId = '';
 
     /**
      * List all departments.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
      * @param  list<string>  $sort
-     * @param  string|null   $filter
      * @return Page<Department>
      */
     public function list(
@@ -38,17 +35,17 @@ class DepartmentsResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v1/departments', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    array_map(Department::fromArray(...), $response->json('results', [])),
+            results: array_map(Department::fromArray(...), $response->json('results', [])),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 

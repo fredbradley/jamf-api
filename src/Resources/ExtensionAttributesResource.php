@@ -16,10 +16,7 @@ class ExtensionAttributesResource extends AbstractResource
     /**
      * List computer extension attribute definitions.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
      * @param  list<string>  $sort
-     * @param  string|null   $filter
      * @return Page<array<string,mixed>>
      */
     public function listComputer(
@@ -29,17 +26,17 @@ class ExtensionAttributesResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v1/computer-extension-attributes', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -56,7 +53,7 @@ class ExtensionAttributesResource extends AbstractResource
     /**
      * Create a computer extension attribute.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function createComputer(array $data): array
@@ -67,7 +64,7 @@ class ExtensionAttributesResource extends AbstractResource
     /**
      * Update a computer extension attribute (full replacement).
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function updateComputer(string $id, array $data): array
@@ -78,7 +75,7 @@ class ExtensionAttributesResource extends AbstractResource
     /**
      * Partially update a computer extension attribute.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function patchComputer(string $id, array $data): array
@@ -106,17 +103,17 @@ class ExtensionAttributesResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v1/mobile-device-extension-attributes', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -133,7 +130,7 @@ class ExtensionAttributesResource extends AbstractResource
     /**
      * Create a mobile device extension attribute.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function createMobileDevice(array $data): array
@@ -144,7 +141,7 @@ class ExtensionAttributesResource extends AbstractResource
     /**
      * Update a mobile device extension attribute (full replacement).
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function updateMobileDevice(string $id, array $data): array

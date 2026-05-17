@@ -12,7 +12,7 @@ beforeEach(function (): void {
 
     Http::fake([
         'jamf.example.com/api/v1/auth/token' => Http::response([
-            'token'   => 'bearer-token',
+            'token' => 'bearer-token',
             'expires' => now()->addMinutes(30)->toIso8601String(),
         ]),
     ]);
@@ -22,7 +22,7 @@ it('lists scripts and returns typed page', function (): void {
     Http::fake([
         'jamf.example.com/api/v1/scripts*' => Http::response([
             'totalCount' => 1,
-            'results'    => [
+            'results' => [
                 ['id' => '10', 'name' => 'Deploy Homebrew', 'scriptContents' => '#!/bin/bash'],
             ],
         ]),
@@ -66,5 +66,5 @@ it('deletes a script', function (): void {
         'jamf.example.com/api/v1/scripts/10' => Http::response(null, 204),
     ]);
 
-    expect(fn () => Jamf::scripts()->delete('10'))->not->toThrow(\Exception::class);
+    expect(fn () => Jamf::scripts()->delete('10'))->not->toThrow(Exception::class);
 });

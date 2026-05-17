@@ -23,10 +23,7 @@ class PackagesResource extends AbstractResource
     /**
      * List all packages.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
      * @param  list<string>  $sort
-     * @param  string|null   $filter
      * @return Page<JamfPackage>
      */
     public function list(
@@ -36,17 +33,17 @@ class PackagesResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v1/packages', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    array_map(JamfPackage::fromArray(...), $response->json('results', [])),
+            results: array_map(JamfPackage::fromArray(...), $response->json('results', [])),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -64,7 +61,7 @@ class PackagesResource extends AbstractResource
      * Note: This creates the metadata record. The actual package file must be
      * uploaded separately to the distribution point.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public function create(array $data): JamfPackage
     {
@@ -74,7 +71,7 @@ class PackagesResource extends AbstractResource
     /**
      * Update an existing package (full replacement).
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public function update(string $id, array $data): JamfPackage
     {

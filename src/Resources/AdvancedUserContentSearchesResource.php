@@ -21,15 +21,15 @@ class AdvancedUserContentSearchesResource extends AbstractResource
     public function list(int $page = 0, int $pageSize = 100): Page
     {
         $response = $this->http->get('/v1/advanced-user-content-searches', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -46,7 +46,7 @@ class AdvancedUserContentSearchesResource extends AbstractResource
     /**
      * Create a new advanced user content search.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function create(array $data): array
@@ -57,7 +57,7 @@ class AdvancedUserContentSearchesResource extends AbstractResource
     /**
      * Update an advanced user content search (full replacement).
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function update(string $id, array $data): array

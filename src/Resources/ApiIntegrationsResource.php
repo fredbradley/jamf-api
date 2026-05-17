@@ -21,10 +21,10 @@ class ApiIntegrationsResource extends AbstractResource
     /**
      * List all API integrations.
      *
-     * @param  int           $page      Zero-based page index.
-     * @param  int           $pageSize  Results per page.
-     * @param  list<string>  $sort      Sort fields, e.g. ['displayName:asc'].
-     * @param  string|null   $filter    RSQL filter string.
+     * @param  int  $page  Zero-based page index.
+     * @param  int  $pageSize  Results per page.
+     * @param  list<string>  $sort  Sort fields, e.g. ['displayName:asc'].
+     * @param  string|null  $filter  RSQL filter string.
      * @return Page<ApiIntegration>
      */
     public function list(
@@ -34,17 +34,17 @@ class ApiIntegrationsResource extends AbstractResource
         ?string $filter = null,
     ): Page {
         $response = $this->http->get('/v1/api-integrations', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
-            'filter'    => $filter,
+            'sort' => $sort ?: null,
+            'filter' => $filter,
         ]));
 
         return new Page(
-            results:    array_map(ApiIntegration::fromArray(...), $response->json('results', [])),
+            results: array_map(ApiIntegration::fromArray(...), $response->json('results', [])),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -59,7 +59,7 @@ class ApiIntegrationsResource extends AbstractResource
     /**
      * Create a new API integration.
      *
-     * @param  array<string,mixed> $data  Integration properties (displayName, enabled, apiRoleIds, accessTokenLifetimeSeconds).
+     * @param  array<string,mixed>  $data  Integration properties (displayName, enabled, apiRoleIds, accessTokenLifetimeSeconds).
      */
     public function create(array $data): ApiIntegration
     {
@@ -69,7 +69,7 @@ class ApiIntegrationsResource extends AbstractResource
     /**
      * Update an existing API integration (full replacement).
      *
-     * @param  array<string,mixed> $data  Updated integration properties.
+     * @param  array<string,mixed>  $data  Updated integration properties.
      */
     public function update(string $id, array $data): ApiIntegration
     {

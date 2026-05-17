@@ -27,24 +27,22 @@ class DeviceEnrollmentsResource extends AbstractResource
     /**
      * List all device enrollment (DEP) instances.
      *
-     * @param  int           $page
-     * @param  int           $pageSize
      * @param  list<string>  $sort
      * @return Page<DeviceEnrollment>
      */
     public function list(int $page = 0, int $pageSize = 100, array $sort = []): Page
     {
         $response = $this->http->get('/v1/device-enrollments', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
-            'sort'      => $sort ?: null,
+            'sort' => $sort ?: null,
         ]));
 
         return new Page(
-            results:    array_map(DeviceEnrollment::fromArray(...), $response->json('results', [])),
+            results: array_map(DeviceEnrollment::fromArray(...), $response->json('results', [])),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -60,7 +58,7 @@ class DeviceEnrollmentsResource extends AbstractResource
      * Create a new device enrollment instance by uploading a DEP token.
      *
      * @param  string  $tokenFilePath  Path to the .p7m token file from Apple Business Manager.
-     * @param  string  $displayName    Human-readable name for this instance.
+     * @param  string  $displayName  Human-readable name for this instance.
      * @return array<string,mixed>
      */
     public function uploadToken(string $tokenFilePath, string $displayName): array
@@ -73,7 +71,7 @@ class DeviceEnrollmentsResource extends AbstractResource
     /**
      * Update an existing device enrollment instance.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public function update(string $id, array $data): DeviceEnrollment
     {
@@ -93,22 +91,20 @@ class DeviceEnrollmentsResource extends AbstractResource
     /**
      * List devices associated with a device enrollment instance.
      *
-     * @param  int  $page
-     * @param  int  $pageSize
      * @return Page<array<string,mixed>>
      */
     public function devices(string $id, int $page = 0, int $pageSize = 100): Page
     {
         $response = $this->http->get("/v2/device-enrollments/{$id}/devices", $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 

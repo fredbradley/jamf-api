@@ -33,21 +33,21 @@ readonly class Webhook
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         return new self(
-            id:                              (string) ($data['id'] ?? ''),
-            name:                            $data['name'] ?? '',
-            enabled:                         (bool) ($data['enabled'] ?? false),
-            url:                             $data['url'] ?? '',
-            contentType:                     $data['contentType'] ?? 'JSON',
-            event:                           $data['event'] ?? '',
-            connectionTimeout:               isset($data['connectionTimeout']) ? (int) $data['connectionTimeout'] : null,
-            readTimeout:                     isset($data['readTimeout']) ? (int) $data['readTimeout'] : null,
+            id: (string) ($data['id'] ?? ''),
+            name: $data['name'] ?? '',
+            enabled: (bool) ($data['enabled'] ?? false),
+            url: $data['url'] ?? '',
+            contentType: $data['contentType'] ?? 'JSON',
+            event: $data['event'] ?? '',
+            connectionTimeout: isset($data['connectionTimeout']) ? (int) $data['connectionTimeout'] : null,
+            readTimeout: isset($data['readTimeout']) ? (int) $data['readTimeout'] : null,
             enableSslCertificateVerification: (bool) ($data['enableSslCertificateVerification'] ?? true),
-            smartGroupTrigger:               $data['smartGroupTrigger'] ?? null,
+            smartGroupTrigger: $data['smartGroupTrigger'] ?? null,
         );
     }
 }

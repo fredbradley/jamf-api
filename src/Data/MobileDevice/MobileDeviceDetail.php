@@ -41,26 +41,26 @@ readonly class MobileDeviceDetail
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         return new self(
-            id:                    (string) ($data['id'] ?? ''),
-            udid:                  $data['udid'] ?? '',
-            general:               $data['general'] ?? null,
-            location:              $data['location'] ?? null,
-            purchasing:            $data['purchasing'] ?? null,
-            applications:          $data['applications'] ?? null,
-            security:              $data['security'] ?? null,
-            network:               $data['network'] ?? null,
-            serviceSubscriptions:  $data['serviceSubscriptions'] ?? null,
-            hardware:              $data['hardware'] ?? null,
-            softwareUpdates:       $data['softwareUpdates'] ?? null,
-            extensionAttributes:   $data['extensionAttributes'] ?? null,
+            id: (string) ($data['id'] ?? ''),
+            udid: $data['udid'] ?? '',
+            general: $data['general'] ?? null,
+            location: $data['location'] ?? null,
+            purchasing: $data['purchasing'] ?? null,
+            applications: $data['applications'] ?? null,
+            security: $data['security'] ?? null,
+            network: $data['network'] ?? null,
+            serviceSubscriptions: $data['serviceSubscriptions'] ?? null,
+            hardware: $data['hardware'] ?? null,
+            softwareUpdates: $data['softwareUpdates'] ?? null,
+            extensionAttributes: $data['extensionAttributes'] ?? null,
             configurationProfiles: $data['configurationProfiles'] ?? null,
-            certificates:          $data['certificates'] ?? null,
-            attachments:           $data['attachments'] ?? null,
+            certificates: $data['certificates'] ?? null,
+            attachments: $data['attachments'] ?? null,
         );
     }
 }

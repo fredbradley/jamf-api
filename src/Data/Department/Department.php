@@ -17,12 +17,12 @@ readonly class Department
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         return new self(
-            id:   (string) ($data['id'] ?? ''),
+            id: (string) ($data['id'] ?? ''),
             name: $data['name'] ?? '',
         );
     }

@@ -35,24 +35,24 @@ readonly class MobileDevicePrestage
     ) {}
 
     /**
-     * @param array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      */
     public static function fromArray(array $data): self
     {
         return new self(
-            id:                               (string) ($data['id'] ?? ''),
-            displayName:                      $data['displayName'] ?? '',
-            defaultPrestage:                  (bool) ($data['defaultPrestage'] ?? false),
-            requireAuthentication:            (bool) ($data['requireAuthentication'] ?? false),
-            preventActivationLock:            (bool) ($data['preventActivationLock'] ?? false),
-            enableDeviceBasedActivationLock:  (bool) ($data['enableDeviceBasedActivationLock'] ?? false),
+            id: (string) ($data['id'] ?? ''),
+            displayName: $data['displayName'] ?? '',
+            defaultPrestage: (bool) ($data['defaultPrestage'] ?? false),
+            requireAuthentication: (bool) ($data['requireAuthentication'] ?? false),
+            preventActivationLock: (bool) ($data['preventActivationLock'] ?? false),
+            enableDeviceBasedActivationLock: (bool) ($data['enableDeviceBasedActivationLock'] ?? false),
             deviceEnrollmentProgramInstanceId: isset($data['deviceEnrollmentProgramInstanceId'])
                 ? (string) $data['deviceEnrollmentProgramInstanceId']
                 : null,
-            skipSetupItems:                   (bool) ($data['skipSetupItems'] ?? false),
-            siteId:                           isset($data['siteId']) ? (string) $data['siteId'] : null,
-            versionLock:                      (int) ($data['versionLock'] ?? 0),
-            modificationDate:                 $data['modificationDate'] ?? null,
+            skipSetupItems: (bool) ($data['skipSetupItems'] ?? false),
+            siteId: isset($data['siteId']) ? (string) $data['siteId'] : null,
+            versionLock: (int) ($data['versionLock'] ?? 0),
+            modificationDate: $data['modificationDate'] ?? null,
         );
     }
 }

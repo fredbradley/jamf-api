@@ -22,15 +22,15 @@ class SelfServiceBrandingResource extends AbstractResource
     public function listIos(int $page = 0, int $pageSize = 100): Page
     {
         $response = $this->http->get('/v1/self-service/branding/ios', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -47,7 +47,7 @@ class SelfServiceBrandingResource extends AbstractResource
     /**
      * Create a new iOS branding configuration.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function createIos(array $data): array
@@ -58,7 +58,7 @@ class SelfServiceBrandingResource extends AbstractResource
     /**
      * Update an iOS branding configuration.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function updateIos(string $id, array $data): array
@@ -82,15 +82,15 @@ class SelfServiceBrandingResource extends AbstractResource
     public function listMacos(int $page = 0, int $pageSize = 100): Page
     {
         $response = $this->http->get('/v1/self-service/branding/macos', $this->buildQuery([
-            'page'      => $page,
+            'page' => $page,
             'page-size' => $pageSize,
         ]));
 
         return new Page(
-            results:    $response->json('results', []),
+            results: $response->json('results', []),
             totalCount: $response->json('totalCount', 0),
             pageNumber: $page,
-            pageSize:   $pageSize,
+            pageSize: $pageSize,
         );
     }
 
@@ -107,7 +107,7 @@ class SelfServiceBrandingResource extends AbstractResource
     /**
      * Create a new macOS branding configuration.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function createMacos(array $data): array
@@ -118,7 +118,7 @@ class SelfServiceBrandingResource extends AbstractResource
     /**
      * Update a macOS branding configuration.
      *
-     * @param  array<string,mixed> $data
+     * @param  array<string,mixed>  $data
      * @return array<string,mixed>
      */
     public function updateMacos(string $id, array $data): array
@@ -138,7 +138,7 @@ class SelfServiceBrandingResource extends AbstractResource
      * Upload a branding image (icon).
      *
      * @param  string  $filePath  Local path to the image file (PNG recommended).
-     * @return array<string,mixed>  Contains the uploaded image ID.
+     * @return array<string,mixed> Contains the uploaded image ID.
      */
     public function uploadImage(string $filePath): array
     {

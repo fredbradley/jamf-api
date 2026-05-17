@@ -57,7 +57,7 @@ return [
     |
     */
 
-    'client_id'     => env('JAMF_CLIENT_ID'),
+    'client_id' => env('JAMF_CLIENT_ID'),
     'client_secret' => env('JAMF_CLIENT_SECRET'),
 
     /*
