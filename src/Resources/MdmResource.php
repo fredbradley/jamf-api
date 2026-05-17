@@ -41,18 +41,26 @@ class MdmResource extends AbstractResource
     }
 
     /**
-     * Send an MDM command to one or more devices.
+     * Send an MDM command to a device.
      *
-     * @param  string  $clientManagementId  Device management ID.
+     * @param  string  $clientManagementId  Device management ID (UUID).
      * @param  string  $commandType  Command name from MdmCommandType enum.
+     * @param  string  $clientType  'MOBILE_DEVICE' or 'COMPUTER'.
      * @param  array<string,mixed>  $params  Additional command parameters (e.g. for SETTINGS commands).
      * @return array<string,mixed>
      */
-    public function send(string $clientManagementId, string $commandType, array $params = []): array
-    {
+    public function send(
+        string $clientManagementId,
+        string $commandType,
+        string $clientType = 'MOBILE_DEVICE',
+        array $params = [],
+    ): array {
         return $this->http->post('/v2/mdm/commands', [
             'clientData' => [
-                'managementId' => $clientManagementId,
+                [
+                    'managementId' => $clientManagementId,
+                    'clientType' => $clientType,
+                ],
             ],
             'commandData' => [
                 'commandType' => $commandType,
