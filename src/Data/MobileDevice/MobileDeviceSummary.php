@@ -10,8 +10,10 @@ namespace FredBradley\JamfApi\Data\MobileDevice;
 readonly class MobileDeviceSummary
 {
     public function __construct(
-        /** Unique identifier used by the Jamf Pro API. */
+        /** Numeric Jamf Pro database ID. */
         public string $id,
+        /** UUID used to target this device in MDM commands (clientManagementIds). */
+        public ?string $managementId,
         /** Universally unique device identifier. */
         public string $udid,
         /** Device name. */
@@ -61,6 +63,7 @@ readonly class MobileDeviceSummary
     {
         return new self(
             id: (string) ($data['id'] ?? ''),
+            managementId: $data['managementId'] ?? null,
             udid: $data['udid'] ?? '',
             name: $data['name'] ?? null,
             serialNumber: $data['serialNumber'] ?? null,
