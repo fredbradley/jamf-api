@@ -16,8 +16,17 @@ class MdmResource extends AbstractResource
     /**
      * List MDM commands sent to devices.
      *
+     * IMPORTANT: The Jamf API requires at least one filter field — calling this
+     * without a filter will return a 400 error. Filterable fields: uuid,
+     * clientManagementId, command, status, clientType, dateSent, validAfter,
+     * dateCompleted, profileId, profileIdentifier, active.
+     *
+     * Example: list(filter: 'clientManagementId==aaaaaaaa-3f1e-4b3a-a5b3-ca0cd7430937')
+     *
      * @param  list<string>  $sort
      * @return Page<array<string,mixed>>
+     *
+     * @throws \InvalidArgumentException if no filter is provided.
      */
     public function list(
         int $page = 0,
@@ -25,6 +34,13 @@ class MdmResource extends AbstractResource
         array $sort = [],
         ?string $filter = null,
     ): Page {
+        if (empty($filter)) {
+            throw new \InvalidArgumentException(
+                'MdmResource::list() requires at least one filter field. '.
+                'Example: list(filter: \'clientManagementId==your-uuid\')'
+            );
+        }
+
         $response = $this->http->get('/v2/mdm/commands', $this->buildQuery([
             'page' => $page,
             'page-size' => $pageSize,
