@@ -1,4 +1,4 @@
-# cranleigh/jamf-api
+# fredbradley/jamf-api
 
 A fully typed, fluent PHP 8.5+ wrapper for the [Jamf Pro REST API](https://developer.jamf.com/jamf-pro/docs), built for Laravel 12/13 using the HTTP Facade.
 
