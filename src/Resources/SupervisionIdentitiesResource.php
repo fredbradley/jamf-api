@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Resources;
+namespace FredBradley\JamfApi\Resources;
 
-use Cranleigh\JamfApi\Pagination\Page;
+use FredBradley\JamfApi\Pagination\Page;
 
 /**
  * Supervision identities — Apple Configurator 2 supervision certificates.

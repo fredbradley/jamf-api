@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Resources;
+namespace FredBradley\JamfApi\Resources;
 
-use Cranleigh\JamfApi\Data\MobileDevice\MobileDeviceDetail;
-use Cranleigh\JamfApi\Data\MobileDevice\MobileDeviceSummary;
-use Cranleigh\JamfApi\Pagination\Page;
+use FredBradley\JamfApi\Data\MobileDevice\MobileDeviceDetail;
+use FredBradley\JamfApi\Data\MobileDevice\MobileDeviceSummary;
+use FredBradley\JamfApi\Pagination\Page;
 
 /**
  * Mobile device inventory — query and manage iOS, iPadOS, tvOS, and watchOS devices.

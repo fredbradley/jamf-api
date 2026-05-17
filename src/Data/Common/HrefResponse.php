@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\Common;
+namespace FredBradley\JamfApi\Data\Common;
 
 /**
  * A minimal response containing only an HREF link to the created/modified resource.

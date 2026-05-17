@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\Account;
+namespace FredBradley\JamfApi\Data\Account;
 
 /**
  * A Jamf Pro user account.

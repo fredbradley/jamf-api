@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Resources;
+namespace FredBradley\JamfApi\Resources;
 
-use Cranleigh\JamfApi\Data\ApiRole\ApiRole;
-use Cranleigh\JamfApi\Pagination\Page;
+use FredBradley\JamfApi\Data\ApiRole\ApiRole;
+use FredBradley\JamfApi\Pagination\Page;
 
 /**
  * Jamf Pro API roles.

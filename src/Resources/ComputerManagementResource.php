@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Resources;
+namespace FredBradley\JamfApi\Resources;
 
 /**
  * Computer management information — provides a summary of all management

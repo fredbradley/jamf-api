@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\Common;
+namespace FredBradley\JamfApi\Data\Common;
 
 /**
  * A single history note entry returned by resource history endpoints.

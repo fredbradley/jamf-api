@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\ApiIntegration;
+namespace FredBradley\JamfApi\Data\ApiIntegration;
 
 /**
  * A Jamf Pro API integration (OAuth client).

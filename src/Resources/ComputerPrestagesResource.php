@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Resources;
+namespace FredBradley\JamfApi\Resources;
 
-use Cranleigh\JamfApi\Data\Common\HistoryNote;
-use Cranleigh\JamfApi\Data\Prestage\ComputerPrestage;
-use Cranleigh\JamfApi\Pagination\Page;
-use Cranleigh\JamfApi\Resources\Concerns\HasHistory;
+use FredBradley\JamfApi\Data\Common\HistoryNote;
+use FredBradley\JamfApi\Data\Prestage\ComputerPrestage;
+use FredBradley\JamfApi\Pagination\Page;
+use FredBradley\JamfApi\Resources\Concerns\HasHistory;
 
 /**
  * Computer prestages — automated device enrollment profiles for Mac computers.

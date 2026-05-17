@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Resources;
+namespace FredBradley\JamfApi\Resources;
 
-use Cranleigh\JamfApi\Data\Common\HistoryNote;
-use Cranleigh\JamfApi\Pagination\Page;
-use Cranleigh\JamfApi\Resources\Concerns\HasHistory;
+use FredBradley\JamfApi\Data\Common\HistoryNote;
+use FredBradley\JamfApi\Pagination\Page;
+use FredBradley\JamfApi\Resources\Concerns\HasHistory;
 
 /**
  * Volume Purchasing (VPP) locations — Apple Business Manager / School Manager

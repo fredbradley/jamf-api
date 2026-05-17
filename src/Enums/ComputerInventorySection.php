@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Enums;
+namespace FredBradley\JamfApi\Enums;
 
 /**
  * Inventory sections available in the v2 computer inventory API.

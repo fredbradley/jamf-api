@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Enums;
+namespace FredBradley\JamfApi\Enums;
 
 /**
  * MDM command types that can be sent to managed devices.

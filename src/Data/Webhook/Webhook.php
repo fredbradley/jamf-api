@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\Webhook;
+namespace FredBradley\JamfApi\Data\Webhook;
 
 /**
  * A Jamf Pro webhook configuration.

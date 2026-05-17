@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Auth\Contracts;
+namespace FredBradley\JamfApi\Auth\Contracts;
 
-use Cranleigh\JamfApi\Exceptions\AuthenticationException;
+use FredBradley\JamfApi\Exceptions\AuthenticationException;
 
 /**
  * Authenticator contract for Jamf Pro API authentication.

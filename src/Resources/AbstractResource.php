@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Resources;
+namespace FredBradley\JamfApi\Resources;
 
-use Cranleigh\JamfApi\JamfHttpClient;
+use FredBradley\JamfApi\JamfHttpClient;
 
 /**
  * Base class for all Jamf Pro API resource wrappers.

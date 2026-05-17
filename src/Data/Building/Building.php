@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\Building;
+namespace FredBradley\JamfApi\Data\Building;
 
 /**
  * A Jamf Pro building.

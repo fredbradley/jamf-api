@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Cranleigh\JamfApi\Data\Computer\ComputerSummary;
+use FredBradley\JamfApi\Data\Computer\ComputerSummary;
 
 it('creates a computer summary from a flat array', function (): void {
     $data = [

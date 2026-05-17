@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Pagination;
+namespace FredBradley\JamfApi\Pagination;
 
 /**
  * A single page of results from a paginated Jamf Pro API endpoint.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\MobileDevice;
+namespace FredBradley\JamfApi\Data\MobileDevice;
 
 /**
  * A lightweight mobile device record returned by list/search endpoints.

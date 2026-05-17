@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Exceptions;
+namespace FredBradley\JamfApi\Exceptions;
 
 use RuntimeException;
 

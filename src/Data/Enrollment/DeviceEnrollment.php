@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\Enrollment;
+namespace FredBradley\JamfApi\Data\Enrollment;
 
 /**
  * An Apple Device Enrollment Program (DEP/ADE) instance configured in Jamf Pro.

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Tests;
+namespace FredBradley\JamfApi\Tests;
 
-use Cranleigh\JamfApi\JamfServiceProvider;
+use FredBradley\JamfApi\JamfServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase

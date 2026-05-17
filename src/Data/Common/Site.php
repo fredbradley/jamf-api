@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\Common;
+namespace FredBradley\JamfApi\Data\Common;
 
 /**
  * A Jamf Pro site reference embedded in other resource objects.

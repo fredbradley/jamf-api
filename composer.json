@@ -1,5 +1,5 @@
 {
-    "name": "cranleigh/jamf-api",
+    "name": "fredbradley/jamf-api",
     "description": "Laravel HTTP Facade wrapper for the Jamf Pro REST API",
     "keywords": ["jamf", "jamf-pro", "mdm", "laravel", "api"],
     "license": "MIT",
@@ -25,21 +25,21 @@
     },
     "autoload": {
         "psr-4": {
-            "Cranleigh\\JamfApi\\": "src/"
+            "FredBradley\\JamfApi\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Cranleigh\\JamfApi\\Tests\\": "tests/"
+            "FredBradley\\JamfApi\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Cranleigh\\JamfApi\\JamfServiceProvider"
+                "FredBradley\\JamfApi\\JamfServiceProvider"
             ],
             "aliases": {
-                "Jamf": "Cranleigh\\JamfApi\\Facades\\Jamf"
+                "Jamf": "FredBradley\\JamfApi\\Facades\\Jamf"
             }
         }
     },

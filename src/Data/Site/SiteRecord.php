@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\Site;
+namespace FredBradley\JamfApi\Data\Site;
 
 /**
  * A Jamf Pro site returned by the sites list endpoint.

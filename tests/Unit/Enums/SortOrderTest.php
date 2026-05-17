@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Cranleigh\JamfApi\Enums\SortOrder;
+use FredBradley\JamfApi\Enums\SortOrder;
 
 it('generates sort parameter strings', function (): void {
     expect(SortOrder::Asc->for('name'))->toBe('name:asc')

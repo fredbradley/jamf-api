@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Auth;
+namespace FredBradley\JamfApi\Auth;
 
-use Cranleigh\JamfApi\Auth\Contracts\AuthenticatorInterface;
-use Cranleigh\JamfApi\Exceptions\AuthenticationException;
+use FredBradley\JamfApi\Auth\Contracts\AuthenticatorInterface;
+use FredBradley\JamfApi\Exceptions\AuthenticationException;
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;

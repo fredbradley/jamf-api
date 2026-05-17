@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\Patch;
+namespace FredBradley\JamfApi\Data\Patch;
 
 /**
  * A Jamf Pro patch software title configuration.

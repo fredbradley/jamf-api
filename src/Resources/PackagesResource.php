@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Resources;
+namespace FredBradley\JamfApi\Resources;
 
-use Cranleigh\JamfApi\Data\Common\HistoryNote;
-use Cranleigh\JamfApi\Data\Package\JamfPackage;
-use Cranleigh\JamfApi\Pagination\Page;
-use Cranleigh\JamfApi\Resources\Concerns\HasHistory;
+use FredBradley\JamfApi\Data\Common\HistoryNote;
+use FredBradley\JamfApi\Data\Package\JamfPackage;
+use FredBradley\JamfApi\Pagination\Page;
+use FredBradley\JamfApi\Resources\Concerns\HasHistory;
 
 /**
  * Jamf Pro packages.

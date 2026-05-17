@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\Prestage;
+namespace FredBradley\JamfApi\Data\Prestage;
 
 /**
  * A Jamf Pro mobile device prestage (automated device enrollment profile).

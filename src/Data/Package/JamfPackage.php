@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\Package;
+namespace FredBradley\JamfApi\Data\Package;
 
 /**
  * A Jamf Pro package record.

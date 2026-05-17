@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Resources;
+namespace FredBradley\JamfApi\Resources;
 
-use Cranleigh\JamfApi\Resources\Concerns\HasCsvExport;
-use Cranleigh\JamfApi\Resources\Concerns\HasHistory;
+use FredBradley\JamfApi\Resources\Concerns\HasCsvExport;
+use FredBradley\JamfApi\Resources\Concerns\HasHistory;
 
 /**
  * Jamf Pro activation code and organisation name management.

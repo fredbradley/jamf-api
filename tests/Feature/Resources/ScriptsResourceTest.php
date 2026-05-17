@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Cranleigh\JamfApi\Data\Script\Script;
-use Cranleigh\JamfApi\Facades\Jamf;
-use Cranleigh\JamfApi\Pagination\Page;
+use FredBradley\JamfApi\Data\Script\Script;
+use FredBradley\JamfApi\Facades\Jamf;
+use FredBradley\JamfApi\Pagination\Page;
 use Illuminate\Support\Facades\Http;
 
 beforeEach(function (): void {

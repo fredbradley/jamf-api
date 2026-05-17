@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Resources;
+namespace FredBradley\JamfApi\Resources;
 
-use Cranleigh\JamfApi\Data\Site\SiteRecord;
+use FredBradley\JamfApi\Data\Site\SiteRecord;
 
 /**
  * Jamf Pro sites.

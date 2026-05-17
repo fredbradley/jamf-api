@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi;
+namespace FredBradley\JamfApi;
 
-use Cranleigh\JamfApi\Auth\OAuthAuthenticator;
-use Cranleigh\JamfApi\Auth\TokenAuthenticator;
+use FredBradley\JamfApi\Auth\OAuthAuthenticator;
+use FredBradley\JamfApi\Auth\TokenAuthenticator;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 

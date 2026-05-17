@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\Computer;
+namespace FredBradley\JamfApi\Data\Computer;
 
 /**
  * Full computer record returned by the v2 computer detail endpoint.

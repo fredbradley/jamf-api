@@ -22,7 +22,7 @@ A fully typed, fluent PHP 8.5+ wrapper for the [Jamf Pro REST API](https://devel
 ## Installation
 
 ```bash
-composer require cranleigh/jamf-api
+composer require fredbradley/jamf-api
 ```
 
 The service provider and facade are registered automatically via Laravel package discovery.
@@ -75,7 +75,7 @@ Uses a Jamf Pro API integration's `client_id` and `client_secret` to obtain an a
 ### Via the Facade
 
 ```php
-use Cranleigh\JamfApi\Facades\Jamf;
+use FredBradley\JamfApi\Facades\Jamf;
 
 $page = Jamf::computerInventory()->list();
 ```
@@ -83,7 +83,7 @@ $page = Jamf::computerInventory()->list();
 ### Via dependency injection
 
 ```php
-use Cranleigh\JamfApi\JamfClient;
+use FredBradley\JamfApi\JamfClient;
 
 class DeviceController extends Controller
 {
@@ -104,7 +104,7 @@ class DeviceController extends Controller
 Endpoints that return lists use the `Page<T>` wrapper:
 
 ```php
-use Cranleigh\JamfApi\Facades\Jamf;
+use FredBradley\JamfApi\Facades\Jamf;
 
 $page = Jamf::computerInventory()->list(
     page:     0,        // zero-based page index
@@ -166,7 +166,7 @@ $page = Jamf::mobileDevices()->list(
 Use the `SortOrder` enum to build sort strings safely:
 
 ```php
-use Cranleigh\JamfApi\Enums\SortOrder;
+use FredBradley\JamfApi\Enums\SortOrder;
 
 $sort = [
     SortOrder::Asc->for('general.name'),
@@ -181,8 +181,8 @@ $page = Jamf::computerInventory()->list(sort: $sort);
 ## Computer Inventory
 
 ```php
-use Cranleigh\JamfApi\Enums\ComputerInventorySection;
-use Cranleigh\JamfApi\Facades\Jamf;
+use FredBradley\JamfApi\Enums\ComputerInventorySection;
+use FredBradley\JamfApi\Facades\Jamf;
 
 // List computers (general fields only by default)
 $page = Jamf::computerInventory()->list(
@@ -480,7 +480,7 @@ $page = Jamf::localAdminPassword()->allAccounts(filter: 'deviceName=="MacBook*"'
 ## MDM Commands
 
 ```php
-use Cranleigh\JamfApi\Enums\MdmCommandType;
+use FredBradley\JamfApi\Enums\MdmCommandType;
 
 // Send a blank push to trigger check-in
 Jamf::mdm()->send([
@@ -559,9 +559,9 @@ All API errors are thrown as typed exceptions that extend `JamfException`:
 | 5xx | `ServerException` |
 
 ```php
-use Cranleigh\JamfApi\Exceptions\NotFoundException;
-use Cranleigh\JamfApi\Exceptions\JamfException;
-use Cranleigh\JamfApi\Facades\Jamf;
+use FredBradley\JamfApi\Exceptions\NotFoundException;
+use FredBradley\JamfApi\Exceptions\JamfException;
+use FredBradley\JamfApi\Facades\Jamf;
 
 try {
     $computer = Jamf::computerInventory()->find('999');
@@ -648,7 +648,7 @@ try {
 The package uses the Laravel HTTP Facade, so responses can be faked in tests using `Http::fake()`:
 
 ```php
-use Cranleigh\JamfApi\Facades\Jamf;
+use FredBradley\JamfApi\Facades\Jamf;
 use Illuminate\Support\Facades\Http;
 
 Http::fake([

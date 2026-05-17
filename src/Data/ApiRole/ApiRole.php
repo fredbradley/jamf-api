@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\ApiRole;
+namespace FredBradley\JamfApi\Data\ApiRole;
 
 /**
  * A Jamf Pro API role that can be assigned to API integrations.

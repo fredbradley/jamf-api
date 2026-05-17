@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Enums;
+namespace FredBradley\JamfApi\Enums;
 
 /**
  * Sort direction used in API list/search queries.

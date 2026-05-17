@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use Cranleigh\JamfApi\Exceptions\ForbiddenException;
-use Cranleigh\JamfApi\Exceptions\NotFoundException;
-use Cranleigh\JamfApi\Exceptions\RateLimitException;
-use Cranleigh\JamfApi\Exceptions\ServerException;
-use Cranleigh\JamfApi\Facades\Jamf;
+use FredBradley\JamfApi\Exceptions\ForbiddenException;
+use FredBradley\JamfApi\Exceptions\NotFoundException;
+use FredBradley\JamfApi\Exceptions\RateLimitException;
+use FredBradley\JamfApi\Exceptions\ServerException;
+use FredBradley\JamfApi\Facades\Jamf;
 use Illuminate\Support\Facades\Http;
 
 beforeEach(function (): void {

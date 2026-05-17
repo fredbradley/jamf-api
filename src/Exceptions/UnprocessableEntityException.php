@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Exceptions;
+namespace FredBradley\JamfApi\Exceptions;
 
 /**
  * Thrown when the Jamf Pro API returns HTTP 422 Unprocessable Entity.

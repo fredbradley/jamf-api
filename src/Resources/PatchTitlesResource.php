@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Resources;
+namespace FredBradley\JamfApi\Resources;
 
-use Cranleigh\JamfApi\Data\Patch\PatchTitle;
-use Cranleigh\JamfApi\Pagination\Page;
+use FredBradley\JamfApi\Data\Patch\PatchTitle;
+use FredBradley\JamfApi\Pagination\Page;
 
 /**
  * Patch management software titles — the catalogue of patchable software.

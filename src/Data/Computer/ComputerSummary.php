@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\Computer;
+namespace FredBradley\JamfApi\Data\Computer;
 
 /**
  * A lightweight computer record returned by list/search endpoints.

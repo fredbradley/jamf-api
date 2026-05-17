@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Resources;
+namespace FredBradley\JamfApi\Resources;
 
-use Cranleigh\JamfApi\Pagination\Page;
+use FredBradley\JamfApi\Pagination\Page;
 
 /**
  * MDM commands — send Apple MDM protocol commands to managed devices.

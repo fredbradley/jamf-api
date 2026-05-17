@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Cranleigh\JamfApi\Pagination\Page;
+use FredBradley\JamfApi\Pagination\Page;
 
 it('reports has more pages correctly', function (): void {
     $page = new Page(results: range(1, 10), totalCount: 25, pageNumber: 0, pageSize: 10);

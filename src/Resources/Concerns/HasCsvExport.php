@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Resources\Concerns;
+namespace FredBradley\JamfApi\Resources\Concerns;
 
 /**
  * Provides CSV export functionality for resources that support it.

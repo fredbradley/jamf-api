@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\Department;
+namespace FredBradley\JamfApi\Data\Department;
 
 /**
  * A Jamf Pro department.

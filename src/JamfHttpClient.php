@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi;
+namespace FredBradley\JamfApi;
 
-use Cranleigh\JamfApi\Auth\Contracts\AuthenticatorInterface;
-use Cranleigh\JamfApi\Exceptions\AuthenticationException;
-use Cranleigh\JamfApi\Exceptions\ForbiddenException;
-use Cranleigh\JamfApi\Exceptions\JamfException;
-use Cranleigh\JamfApi\Exceptions\NotFoundException;
-use Cranleigh\JamfApi\Exceptions\RateLimitException;
-use Cranleigh\JamfApi\Exceptions\ServerException;
-use Cranleigh\JamfApi\Exceptions\UnprocessableEntityException;
+use FredBradley\JamfApi\Auth\Contracts\AuthenticatorInterface;
+use FredBradley\JamfApi\Exceptions\AuthenticationException;
+use FredBradley\JamfApi\Exceptions\ForbiddenException;
+use FredBradley\JamfApi\Exceptions\JamfException;
+use FredBradley\JamfApi\Exceptions\NotFoundException;
+use FredBradley\JamfApi\Exceptions\RateLimitException;
+use FredBradley\JamfApi\Exceptions\ServerException;
+use FredBradley\JamfApi\Exceptions\UnprocessableEntityException;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 

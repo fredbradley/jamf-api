@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\Category;
+namespace FredBradley\JamfApi\Data\Category;
 
 /**
  * A Jamf Pro category.

@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Cranleigh\JamfApi\Auth\TokenAuthenticator;
-use Cranleigh\JamfApi\Exceptions\AuthenticationException;
+use FredBradley\JamfApi\Auth\TokenAuthenticator;
+use FredBradley\JamfApi\Exceptions\AuthenticationException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 

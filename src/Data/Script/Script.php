@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Data\Script;
+namespace FredBradley\JamfApi\Data\Script;
 
 /**
  * A Jamf Pro script.

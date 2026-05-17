@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Resources;
+namespace FredBradley\JamfApi\Resources;
 
-use Cranleigh\JamfApi\Data\Computer\ComputerDetail;
-use Cranleigh\JamfApi\Data\Computer\ComputerSummary;
-use Cranleigh\JamfApi\Pagination\Page;
+use FredBradley\JamfApi\Data\Computer\ComputerDetail;
+use FredBradley\JamfApi\Data\Computer\ComputerSummary;
+use FredBradley\JamfApi\Pagination\Page;
 
 /**
  * Computer inventory — the primary endpoint for querying and managing computer records.

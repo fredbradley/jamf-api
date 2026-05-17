@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Cranleigh\JamfApi\Resources;
+namespace FredBradley\JamfApi\Resources;
 
-use Cranleigh\JamfApi\Data\Account\Account;
-use Cranleigh\JamfApi\Pagination\Page;
+use FredBradley\JamfApi\Data\Account\Account;
+use FredBradley\JamfApi\Pagination\Page;
 
 /**
  * Jamf Pro user accounts.
