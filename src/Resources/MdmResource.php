@@ -41,6 +41,19 @@ class MdmResource extends AbstractResource
     }
 
     /**
+     * Send a blank push notification to one or more devices.
+     *
+     * @param  list<string>  $clientManagementIds  Device management IDs (UUIDs).
+     * @return array<string,mixed>
+     */
+    public function blankPush(array $clientManagementIds): array
+    {
+        return $this->http->post('/v2/mdm/blank-push', [
+            'clientManagementIds' => $clientManagementIds,
+        ])->json();
+    }
+
+    /**
      * Send an MDM command to a device.
      *
      * @param  string  $clientManagementId  Device management ID (UUID).
