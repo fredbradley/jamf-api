@@ -7,7 +7,7 @@ namespace FredBradley\JamfApi\Enums;
 /**
  * MDM command types that can be sent to managed devices.
  *
- * Use these with MdmResource::send() or MobileDeviceManagementCommandsResource::send().
+ * Use these with Jamf::mdm()->send() or Jamf::mobileDeviceManagementCommands()->send().
  *
  * The SETTINGS command type is special — it accepts additional parameters in the
  * request body (bluetooth, dataRoaming, voiceRoaming, personalHotspot). Use the
