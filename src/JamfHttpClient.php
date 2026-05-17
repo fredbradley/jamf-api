@@ -122,11 +122,16 @@ final class JamfHttpClient
     ): Response {
         $this->ensureToken();
 
-        $pending = Http::withHeaders([
+        $headers = [
             'Authorization' => $this->auth->getAuthorizationHeader(),
             'Accept' => 'application/json',
-            'Content-Type' => 'application/json',
-        ])
+        ];
+
+        if (in_array($method, ['POST', 'PUT', 'PATCH'], true)) {
+            $headers['Content-Type'] = 'application/json';
+        }
+
+        $pending = Http::withHeaders($headers)
             ->timeout($this->timeout)
             ->baseUrl($this->baseUrl);
 
