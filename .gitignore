@@ -1,0 +1,25 @@
+/vendor/
+/node_modules/
+
+# Composer
+composer.phar
+
+# PHPUnit
+.phpunit.result.cache
+.phpunit.cache/
+
+# Laravel/testing
+.env
+.env.testing
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Build/coverage
+/coverage/
+/build/
+/.php-cs-fixer.cache

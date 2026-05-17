@@ -1,0 +1,53 @@
+{
+    "name": "cranleigh/jamf-api",
+    "description": "Laravel HTTP Facade wrapper for the Jamf Pro REST API",
+    "keywords": ["jamf", "jamf-pro", "mdm", "laravel", "api"],
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Cranleigh School",
+            "email": "frb@cranleigh.org"
+        }
+    ],
+    "require": {
+        "php": "^8.5",
+        "illuminate/http": "^12.0|^13.0",
+        "illuminate/support": "^12.0|^13.0",
+        "illuminate/contracts": "^12.0|^13.0",
+        "illuminate/cache": "^12.0|^13.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^10.0|^11.0",
+        "pestphp/pest": "^3.0",
+        "pestphp/pest-plugin-laravel": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cranleigh\\JamfApi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Cranleigh\\JamfApi\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cranleigh\\JamfApi\\JamfServiceProvider"
+            ],
+            "aliases": {
+                "Jamf": "Cranleigh\\JamfApi\\Facades\\Jamf"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
