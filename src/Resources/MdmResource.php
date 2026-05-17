@@ -25,7 +25,7 @@ class MdmResource extends AbstractResource
         array $sort = [],
         ?string $filter = null,
     ): Page {
-        $response = $this->http->get('/v1/mdm/commands', $this->buildQuery([
+        $response = $this->http->get('/v2/mdm/commands', $this->buildQuery([
             'page' => $page,
             'page-size' => $pageSize,
             'sort' => $sort ?: null,
